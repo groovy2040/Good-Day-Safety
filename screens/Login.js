@@ -22,7 +22,7 @@ const Login = () => {
                     <PageLogo resizeMode="cover" source={require('./../assets/favicon.png')} />
                     <PageTitle>Good Day App</PageTitle>
                     <Subtitle>Account Login</Subtitle>
-                    <Subtitle>Hello Luke!</Subtitle>
+                    <Subtitle>Hello Luke Again!</Subtitle>
 
 
                     <Formik
