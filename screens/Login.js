@@ -26,6 +26,9 @@ const Login = () => {
                     <Subtitle>Reading</Subtitle>
                     <Subtitle>Test</Subtitle>
                     <Subtitle>Project Development</Subtitle>
+                    <Subtitle>1</Subtitle>
+                    <Subtitle>2</Subtitle>
+                    <Subtitle>3</Subtitle>
 
                     <Formik
                         initialValues={{email: '', password: ''}}
