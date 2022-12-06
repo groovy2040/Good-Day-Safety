@@ -16,8 +16,9 @@ function Modules({ navigation }) {
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Modules</PageTitle>
+                <Button title="Test Module" onPress={() => navigation.navigate('Account Settings')}/>
             </InnerContainer>
-            <Button title="Go to Details" onPress={() => navigation.navigate('Form1')}/>
+            <Button title="Go to The Anonymous Report Form" onPress={() => navigation.navigate('Condition')}/>
         </StyledContainer>
     )
 }

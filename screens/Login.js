@@ -3,8 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-//formik
 import { Formik } from 'formik';
 
 import { 
@@ -16,7 +14,9 @@ import {
     StyledFormArea
 } from '../components/styles';
 
-//const Login = () => {
+/*
+    PageLogo - Change the source for your specified image.
+*/
 function Login({ navigation }) {
     return (
         <StyledContainer>
@@ -24,11 +24,12 @@ function Login({ navigation }) {
             <InnerContainer>
                 <PageLogo resizeMode="cover" source={require('./../assets/favicon.png')} />
                 <PageTitle>Good Day App</PageTitle>
-                <Subtitle>Account Login</Subtitle>
-                <Subtitle>Hello Luke Again!</Subtitle>
-                <Subtitle>Reading</Subtitle>
-                <Subtitle>Test</Subtitle>
-                <Subtitle>Project Development</Subtitle>
+                <Text>{'\n'}</Text>
+                <Button title="Create Account" onPress={() => navigation.navigate('Login')}/>
+                <Text>{'\n'}</Text>
+                <Button title="Login" onPress={() => navigation.navigate('Login')}/>
+                <Text>{'\n'}</Text>
+                <Button title="Submit Invite ID" onPress={() => navigation.navigate('Login')}/>
                 <Formik
                     initialValues={{email: '', password: ''}}
                     onSubmit={(values) => {
@@ -36,7 +37,7 @@ function Login({ navigation }) {
                     }}
                 />
             </InnerContainer>
-            <Button title="Go to Details" onPress={() => navigation.navigate('Modules')}/>
+            <Button title="Go to Modules" onPress={() => navigation.navigate('Modules')}/>
         </StyledContainer>
         
     
@@ -54,8 +55,5 @@ function App() {
     </NavigationContainer>
   );
 }
-
-// Code for the page logo
-//<PageLogo resizeMode="cover" source={require('./../assets/img/img1.png')} />
 
 export default Login;

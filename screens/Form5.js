@@ -10,17 +10,16 @@ import {
     StyledFormArea
 } from '../components/styles';
 
-function Form1({ navigation }) {
+function Form5({ navigation }) {
     return (
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Can you make this a SAFE condition? *</PageTitle>
-                <Subtitle style={{padding: 60}}>* If not, please ensure it is inaccessible to others and proceed with your report.</Subtitle>
+                <PageTitle>Are there any other comments you would like to make?</PageTitle>
             </InnerContainer>
-            <Button title="Next" onPress={() => navigation.navigate('Location')}/>
+            <Button title="Next" onPress={() => navigation.navigate('Confirm')}/>
         </StyledContainer>
     )
 }
 
-export default Form1;
+export default Form5;

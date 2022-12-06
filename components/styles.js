@@ -36,7 +36,7 @@ export const PageLogo = styled.Image`
 `
 
 export const PageTitle = styled.Text`
-    font-size: 30px;
+    font-size: 50px;
     text-align: center;
     font-weight: bold;
     color: ${brand};
@@ -44,7 +44,7 @@ export const PageTitle = styled.Text`
 `
 
 export const Subtitle = styled.Text`
-    font-size:18px;
+    font-size:20px;
     margin-bottom; 20px;
     letter-spacing: 1px;
     font-weight: bold;
