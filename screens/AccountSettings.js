@@ -7,7 +7,7 @@ import {
     StyledContainer,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
 } from '../components/styles';
 
 /*
