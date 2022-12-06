@@ -25,7 +25,7 @@ function Login({ navigation }) {
                 <PageLogo resizeMode="cover" source={require('./../assets/favicon.png')} />
                 <PageTitle>Good Day App</PageTitle>
                 <Text>{'\n'}</Text>
-                <Button title="Create Account" onPress={() => navigation.navigate('Login')}/>
+                <Button title="Create Account" onPress={() => navigation.navigate('Create an Account')}/>
                 <Text>{'\n'}</Text>
                 <Button title="Login" onPress={() => navigation.navigate('Modules')}/>
                 <Text>{'\n'}</Text>
@@ -37,7 +37,6 @@ function Login({ navigation }) {
                     }}
                 />
             </InnerContainer>
-            <Button title="Go to Modules" onPress={() => navigation.navigate('Modules')}/>
         </StyledContainer>
         
     

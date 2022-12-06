@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //The Screens for the Navigator
 import Login from './screens/Login'
+import CreateAccount from './screens/CreateAccount'
 import Modules from './screens/Modules'
 import AccountSettings from './screens/AccountSettings'
 import Reports from './screens/Reports'
@@ -30,6 +31,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Home" component={Login} />
+        <Stack.Screen name="Create an Account" component={CreateAccount} />
         <Stack.Screen name="Modules" component={Modules} />
         <Stack.Screen name="Account Settings" component={AccountSettings} />
         <Stack.Screen name="Reports" component={Reports} />
