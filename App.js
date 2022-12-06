@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator();
 }*/
 
 /*
-  Stack.Navigator sets the initial page the app loads onto
+  Stack.Navigator sets the initial page the app loads onto the Login screen
 
 */
 function App() {
