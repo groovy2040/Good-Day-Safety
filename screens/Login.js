@@ -27,9 +27,9 @@ function Login({ navigation }) {
                 <Text>{'\n'}</Text>
                 <Button title="Create Account" onPress={() => navigation.navigate('Login')}/>
                 <Text>{'\n'}</Text>
-                <Button title="Login" onPress={() => navigation.navigate('Login')}/>
+                <Button title="Login" onPress={() => navigation.navigate('Modules')}/>
                 <Text>{'\n'}</Text>
-                <Button title="Submit Invite ID" onPress={() => navigation.navigate('Login')}/>
+                <Button title="Submit Invite ID" onPress={() => navigation.navigate('Condition')}/>
                 <Formik
                     initialValues={{email: '', password: ''}}
                     onSubmit={(values) => {

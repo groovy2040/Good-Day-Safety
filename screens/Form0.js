@@ -10,17 +10,17 @@ import {
     StyledFormArea
 } from '../components/styles';
 
-function Modules({ navigation }) {
+function Form0({ navigation }) {
     return (
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Modules</PageTitle>
-                <Button title="Test Module" onPress={() => navigation.navigate('Account Settings')}/>
+                <PageTitle>Click START to begin your report!</PageTitle>
+                <Subtitle style={{padding: 60}}>This report will be completely anonymous. Your identity will not be traceable.</Subtitle>
             </InnerContainer>
-            <Button title="Go to The Anonymous Report Form" onPress={() => navigation.navigate('Form Start')}/>
+            <Button title="Start" onPress={() => navigation.navigate('Condition')}/>
         </StyledContainer>
     )
 }
 
-export default Modules;
+export default Form0;
