@@ -15,9 +15,8 @@ function Form7({ navigation }) {
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>{'\n'}{'\n'}{'\n'}SUCCESS!</PageTitle>
-                <Subtitle style={{padding: 0}}>{'\n'}Thank you for your submission!</Subtitle>
-                <Subtitle style={{padding: 40}}>We appreciate your joint effort in creating a safe work environment for everyone!</Subtitle>
+                <PageTitle>SUCCESS!</PageTitle>
+                <Subtitle>Thank you for your submission! We appreciate your joint effort in creating a safe work environment for everyone!</Subtitle>
             </InnerContainer>
             <Button title="Back To Home" onPress={() => navigation.navigate('Home')}/>
         </StyledContainer>

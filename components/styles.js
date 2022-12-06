@@ -31,12 +31,12 @@ export const InnerContainer = styled.View`
 `
 
 export const PageLogo = styled.Image`
-    width: 250px;
-    height: 200px;
+    width: 200px;
+    height: 75px;
 `
 
 export const PageTitle = styled.Text`
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
     font-weight: bold;
     color: ${brand};
