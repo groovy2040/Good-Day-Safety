@@ -1,16 +1,34 @@
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from './screens/Login';
+//The Screens for the Navigator
+import Login from './screens/Login'
+import Modules from './screens/Modules'
+import Form1 from './screens/Form1'
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+/*export default function App() {
   return <Login />;
+  return <RootStack/>;
+}*/
+
+/*
+  Stack.Navigator sets the initial page the app loads onto
+
+*/
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Modules" component={Modules} />
+        <Stack.Screen name="Form1" component={Form1} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
-/*const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});*/
+export default App;

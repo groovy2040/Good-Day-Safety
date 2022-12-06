@@ -10,16 +10,16 @@ import {
     StyledFormArea
 } from '../components/styles';
 
-function Modules({ navigation }) {
+function Form1({ navigation }) {
     return (
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Modules</PageTitle>
+                <PageTitle>Form1</PageTitle>
             </InnerContainer>
             <Button title="Go to Details" onPress={() => navigation.navigate('Form1')}/>
         </StyledContainer>
     )
 }
 
-export default Modules;
+export default Form1;
