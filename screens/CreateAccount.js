@@ -10,6 +10,9 @@ import {
     StyledFormArea
 } from '../components/styles';
 
+/*
+    This page will allow the user to create an account to use the app.
+*/
 function CreateAccount({ navigation }) {
     return (
         <StyledContainer>

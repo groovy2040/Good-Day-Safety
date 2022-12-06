@@ -10,6 +10,9 @@ import {
     StyledFormArea
 } from '../components/styles';
 
+/*
+    This page will allow the logged in user to manage their subscription to the app.
+*/
 function Invites({ navigation }) {
     return (
         <StyledContainer>

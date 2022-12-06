@@ -10,6 +10,9 @@ import {
     StyledFormArea
 } from '../components/styles';
 
+/*
+    This page will allow a logged in user to manage all of their account settings.
+*/
 function AccountSettings({ navigation }) {
     return (
         <StyledContainer>

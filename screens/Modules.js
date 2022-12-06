@@ -10,6 +10,9 @@ import {
     StyledFormArea
 } from '../components/styles';
 
+/*
+    This page will allow the logged in user to manage their modules.
+*/
 function Modules({ navigation }) {
     return (
         <StyledContainer>

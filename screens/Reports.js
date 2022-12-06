@@ -10,6 +10,9 @@ import {
     StyledFormArea
 } from '../components/styles';
 
+/*
+    This page will allow the logged in user to view anonymous reports made by their invitees.
+*/
 function Invites({ navigation }) {
     return (
         <StyledContainer>
