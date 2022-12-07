@@ -25,6 +25,7 @@ const Stack = createNativeStackNavigator();
 /*
   Stack.Navigator - sets the initial page the app loads onto the Login screen the Login screen
   Stack.Screen - allows the page to be used in the navigator
+  TEST PLEASE DELETE
 */
 function App() {
   return (
