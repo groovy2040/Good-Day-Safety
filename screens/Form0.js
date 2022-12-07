@@ -10,6 +10,8 @@ import {
     StyledFormArea
 } from '../components/styles';
 
+
+//Return is to display the screen, anything else can be written within the function, but outside of the return
 function Form0({ navigation }) {
     return (
         <StyledContainer>
