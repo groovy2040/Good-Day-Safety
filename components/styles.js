@@ -31,8 +31,8 @@ export const InnerContainer = styled.View`
 `
 
 export const PageLogo = styled.Image`
-    width: 250px;
-    height: 200px;
+    width: 200px;
+    height: 75px;
 `
 
 export const PageTitle = styled.Text`
@@ -44,7 +44,7 @@ export const PageTitle = styled.Text`
 `
 
 export const Subtitle = styled.Text`
-    font-size:18px;
+    font-size:20px;
     margin-bottom; 20px;
     letter-spacing: 1px;
     font-weight: bold;

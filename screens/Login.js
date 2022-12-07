@@ -1,8 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text } from 'react-native';
-
-//formik
+import { Text, Button, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
 
 import { 
@@ -14,36 +14,49 @@ import {
     StyledFormArea
 } from '../components/styles';
 
-const Login = () => {
+/*
+    This function is the home page for the app.
+    Create Account - Navigates to the account creation page.
+    Login - If the login details are correct, it will log into the app and navigate to the modules page.
+    Submit Invite ID - After submitting a valid invite ID, the user is navigated to the start of the report.
+    PageLogo - Change the source for your specified image.
+*/
+function Login({ navigation }) {
     return (
         <StyledContainer>
             <StatusBar style="dark" />
-                <InnerContainer>
-                    <PageLogo resizeMode="cover" source={require('./../assets/favicon.png')} />
-                    <PageTitle>Good Day App</PageTitle>
-                    <Subtitle>Account Login</Subtitle>
-                    <Subtitle>Hello Luke Again!</Subtitle>
-                    <Subtitle>Reading</Subtitle>
-                    <Subtitle>Test</Subtitle>
-                    <Subtitle>Project Development</Subtitle>
-                    <Subtitle>1</Subtitle>
-                    <Subtitle>2</Subtitle>
-                    <Subtitle>3</Subtitle>
-
-                    <Formik
-                        initialValues={{email: '', password: ''}}
-                        onSubmit={(values) => {
-                            console.log(values);
-                        }}
-                    />
-                </InnerContainer>
+            <InnerContainer>
+                <PageLogo resizeMode="cover" source={require('./../assets/favicon.png')} />
+                <PageTitle>Good Day App</PageTitle>
+                <Text>{'\n'}</Text>
+                <Button title="Create Account" onPress={() => navigation.navigate('Create an Account')}/>
+                <Text>{'\n'}</Text>
+                <Button title="Login" onPress={() => navigation.navigate('Modules')}/>
+                <Text>{'\n'}</Text>
+                <Button title="Submit Invite ID" onPress={() => navigation.navigate('Form Start')}/>
+                <Formik
+                    initialValues={{email: '', password: ''}}
+                    onSubmit={(values) => {
+                        console.log(values);
+                    }}
+                />
+            </InnerContainer>
         </StyledContainer>
         
     
     );
 }
 
-// Code for the page logo
-//<PageLogo resizeMode="cover" source={require('./../assets/img/img1.png')} />
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default Login;
