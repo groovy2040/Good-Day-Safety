@@ -69,3 +69,22 @@ export const keyboardViewContainer = StyleSheet.create({
     width: '100%',
     alignItems: 'center'
 })
+
+export const CheckBox = StyleSheet.create({
+    container: {
+      flex: 1,
+      marginHorizontal: 16,
+      marginVertical: 32,
+    },
+    section: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    paragraph: {
+      fontSize: 15,
+      color: {primary},
+    },
+    checkbox: {
+      margin: 8,
+    },
+  });

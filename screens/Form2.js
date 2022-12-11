@@ -10,7 +10,6 @@ import {
     Subtitle,
     StyledFormArea,
     TextBoxStyle,
-    keyboardViewContainer
 } from '../components/styles';
 
 function Form2({ navigation }) {
@@ -18,8 +17,6 @@ function Form2({ navigation }) {
 
     return (
         <StyledContainer>
-            <ScrollView>
-            <KeyboardAwareScrollView>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Please specify the location of the unsafe condition</PageTitle>
@@ -32,10 +29,13 @@ function Form2({ navigation }) {
                     maxLength={200} />
             </InnerContainer>
             <Button title="Next" onPress={() => navigation.navigate('Specify')} />
-            </KeyboardAwareScrollView>
-            </ScrollView>
         </StyledContainer>
     )
 }
+
+/* WIP for making the keyboard independent of the assets on screen (like the button)
+<ScrollView>
+<KeyboardAwareScrollView>
+*/
 
 export default Form2;
