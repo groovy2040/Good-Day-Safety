@@ -21,6 +21,10 @@ function Form7({ navigation }) {
             <Button title="Back To Home" onPress={() => navigation.navigate('Home')}/>
         </StyledContainer>
     )
-}
 
+    submit = () => {
+        alert(`Confirmation email has been sent to ${this.state.email}`);
+    };
+}
+//this.submit for making an alert
 export default Form7;

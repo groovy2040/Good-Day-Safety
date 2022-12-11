@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { StatusBar } from 'expo-status-bar';
 
@@ -54,3 +54,18 @@ export const Subtitle = styled.Text`
 export const StyledFormArea = styled.View`
     width: 90%;
 `
+
+export const TextBoxStyle = StyleSheet.create({
+    input: {
+        height: 200,
+        width: 300,
+        margin: 10,
+        borderWidth: 1,
+        padding: 10,
+    },
+  });
+
+export const keyboardViewContainer = StyleSheet.create({
+    width: '100%',
+    alignItems: 'center'
+})
