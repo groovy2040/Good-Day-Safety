@@ -57,8 +57,18 @@ export const StyledFormArea = styled.View`
 
 export const TextBoxStyle = StyleSheet.create({
   input: {
+      height: 50,
+      width: 350,
+      margin: 10,
+      borderWidth: 1,
+      padding: 10,
+  },
+});
+
+export const TextBoxStyleBig = StyleSheet.create({
+  input: {
       height: 200,
-      width: 300,
+      width: 350,
       margin: 10,
       borderWidth: 1,
       padding: 10,
