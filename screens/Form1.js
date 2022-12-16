@@ -13,6 +13,8 @@ import {
 } from '../components/styles';
 
 function Form1({ navigation }) {
+    const [isChecked, setChecked] = useState(false);
+
     return (
         <StyledContainer>
             <StatusBar style="dark" />
