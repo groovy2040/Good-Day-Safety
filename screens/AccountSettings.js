@@ -20,8 +20,6 @@ function AccountSettings({ navigation }) {
             <InnerContainer>
                 <PageTitle>Account Settings</PageTitle>
                 <Text>{'\n'}</Text>
-                <Button title="Reports" onPress={() => navigation.navigate('Reports')}/>
-                <Text>{'\n'}</Text>
                 <Button title="Invite ID Management" onPress={() => navigation.navigate('Invite ID Management')}/>
                 <Text>{'\n'}</Text>
                 <Button title="Report Receipt Designees"/>
