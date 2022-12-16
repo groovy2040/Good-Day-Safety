@@ -7,7 +7,8 @@ import {
     StyledContainer,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
+    TextBoxStyle
 } from '../components/styles';
 
 function Form2({ navigation }) {
@@ -19,6 +20,13 @@ function Form2({ navigation }) {
                 <Subtitle>Project Name:</Subtitle>
                 <Subtitle>Floor Number:</Subtitle>
                 <Subtitle>Section of the Floor (North, East, West, South):</Subtitle>
+                <TextInput
+                    style={TextBoxStyle.input}
+                    onChangeText={onChangeText}
+                    value={text}
+                    placeholder="Please specify here"
+                    multiline
+                    maxLength={200} />
             </InnerContainer>
             <Button title="Next" onPress={() => navigation.navigate('Specify')}/>
         </StyledContainer>

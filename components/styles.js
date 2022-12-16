@@ -54,3 +54,37 @@ export const Subtitle = styled.Text`
 export const StyledFormArea = styled.View`
     width: 90%;
 `
+
+export const TextBoxStyle = StyleSheet.create({
+  input: {
+      height: 200,
+      width: 300,
+      margin: 10,
+      borderWidth: 1,
+      padding: 10,
+  },
+});
+
+export const keyboardViewContainer = StyleSheet.create({
+  width: '100%',
+  alignItems: 'center'
+})
+
+export const CheckBox = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 16,
+    marginVertical: 32,
+  },
+  section: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  paragraph: {
+    fontSize: 15,
+    color: {primary},
+  },
+  checkbox: {
+    margin: 8,
+  },
+});

@@ -7,7 +7,8 @@ import {
     StyledContainer,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
+    CheckBox
 } from '../components/styles';
 
 function Form1({ navigation }) {
