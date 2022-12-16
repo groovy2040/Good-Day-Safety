@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View } from 'react-native';
+import Checkbox from 'expo-checkbox';
 
 import { 
     InnerContainer,
