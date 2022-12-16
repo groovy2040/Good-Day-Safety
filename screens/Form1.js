@@ -20,7 +20,7 @@ function Form1({ navigation }) {
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Can you make this a SAFE condition? *</PageTitle>
-                <Subtitle>* if possible, please ensure that this condition is not accessible by others and proceed with your report.</Subtitle>
+                <Subtitle>* if possible, please ensure that this condition is not accessible by others and proceed with your report.{"\n"}{"\n"}</Subtitle>
                 <View style={CheckBox.section}>
                     <Checkbox
                     style={CheckBox.checkbox}
