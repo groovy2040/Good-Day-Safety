@@ -6,9 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //The Screens for the Navigator
 import Login from './screens/Login'
 import CreateAccount from './screens/CreateAccount'
-import Modules from './screens/Modules'
-import AccountSettings from './screens/AccountSettings'
 import Reports from './screens/Reports'
+import AccountSettings from './screens/AccountSettings'
 import Invites from './screens/Invites'
 import Subscription from './screens/Subscription'
 import Form0 from './screens/Form0'
@@ -32,7 +31,6 @@ function App() {
       <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Home" component={Login} />
         <Stack.Screen name="Create an Account" component={CreateAccount} />
-        <Stack.Screen name="Modules" component={Modules} />
         <Stack.Screen name="Account Settings" component={AccountSettings} />
         <Stack.Screen name="Reports" component={Reports} />
         <Stack.Screen name="Invite ID Management" component={Invites} />
