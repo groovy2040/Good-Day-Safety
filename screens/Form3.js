@@ -16,6 +16,13 @@ function Form3({ navigation }) {
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Please specify what type of unsafe condition</PageTitle>
+                <TextInput
+                    style={TextBoxStyle.input}
+                    onChangeText={onChangeText}
+                    value={text}
+                    placeholder="Please specify here"
+                    multiline
+                    maxLength={200} />
             </InnerContainer>
             <Button title="Next" onPress={() => navigation.navigate('Photo')}/>
         </StyledContainer>
