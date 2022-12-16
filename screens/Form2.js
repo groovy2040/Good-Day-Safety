@@ -16,6 +16,9 @@ function Form2({ navigation }) {
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Please specify the location of the unsafe condition</PageTitle>
+                <Subtitle>Project Name:</Subtitle>
+                <Subtitle>Floor Number:</Subtitle>
+                <Subtitle>Section of the Floor (North, East, West, South):</Subtitle>
             </InnerContainer>
             <Button title="Next" onPress={() => navigation.navigate('Specify')}/>
         </StyledContainer>

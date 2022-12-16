@@ -24,7 +24,11 @@ function AccountSettings({ navigation }) {
                 <Text>{'\n'}</Text>
                 <Button title="Invite ID Management" onPress={() => navigation.navigate('Invite ID Management')}/>
                 <Text>{'\n'}</Text>
-                <Button title="Subscription Management" onPress={() => navigation.navigate('Subscription Management')}/>
+                <Button title="Report Receipt Designees"/>
+                <Text>{'\n'}</Text>
+                <Button title="Account Settings"/>
+                <Text>{'\n'}</Text>
+                <Button title="Subscribe for functionality"/>
             </InnerContainer>
         </StyledContainer>
     )

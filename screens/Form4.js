@@ -15,8 +15,8 @@ function Form4({ navigation }) {
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Attach a photo of the unsafe condition *</PageTitle>
-                <Subtitle>* This step is optional, but recommended for proof</Subtitle>
+                <PageTitle>Attach a single photo of the unsafe condition *</PageTitle>
+                <Subtitle>* This step is mandatory.</Subtitle>
             </InnerContainer>
             <Button title="Next" onPress={() => navigation.navigate('Comments')}/>
         </StyledContainer>
