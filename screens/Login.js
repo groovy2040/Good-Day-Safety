@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View } from 'react-native';
+import { Text, Button, View, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
@@ -11,7 +11,8 @@ import {
     PageLogo,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
+    TextBoxStyle
 } from '../components/styles';
 
 /*
@@ -32,6 +33,13 @@ function Login({ navigation }) {
                 <Button title="Create Account" onPress={() => navigation.navigate('Create an Account')}/>
                 <Text>{'\n'}</Text>
                 <Button title="Login" onPress={() => navigation.navigate('Reports')}/>
+                <Text>{'\n'}</Text>
+                <TextInput
+                    style={TextBoxStyle.input}
+                    numeric
+                    placeholder="Enter your Invite ID here"
+                    keyboardType="numeric"
+                    maxLength={6} />
                 <Text>{'\n'}</Text>
                 <Button title="Submit Invite ID" onPress={() => navigation.navigate('Form Start')}/>
                 <Formik
