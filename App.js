@@ -10,6 +10,8 @@ import Reports from './screens/Reports'
 import AccountSettings from './screens/AccountSettings'
 import Invites from './screens/Invites'
 import Subscription from './screens/Subscription'
+import DesignatedAdmins from './screens/DesignatedAdmins'
+import AccountDetails from './screens/AccountDetails'
 import Form0 from './screens/Form0'
 import Form1 from './screens/Form1'
 import Form2 from './screens/Form2'
@@ -35,6 +37,8 @@ function App() {
         <Stack.Screen name="Reports" component={Reports} />
         <Stack.Screen name="Invite ID Management" component={Invites} />
         <Stack.Screen name="Subscription Management" component={Subscription} />
+        <Stack.Screen name="Designated Admins" component={DesignatedAdmins} />
+        <Stack.Screen name="Account Details" component={AccountDetails} />
         <Stack.Screen name="Form Start" component={Form0} />
         <Stack.Screen name="Condition" component={Form1} />
         <Stack.Screen name="Location" component={Form2} />
