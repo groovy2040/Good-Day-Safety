@@ -23,7 +23,7 @@ function Form7({ navigation }) {
     )
 
     submit = () => {
-        alert(`Confirmation email has been sent to ${this.state.email}`);
+        alert('This Report has been sent successfully!');
     };
 }
 //this.submit for making an alert

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as ImagePicker from 'expo-image-picker';
 
 //The Screens for the Navigator
 import Login from './screens/Login'
@@ -24,6 +25,7 @@ import Form7 from './screens/Form7'
 const Stack = createNativeStackNavigator();
 
 /*
+  pickImageAsync - Lets users pick an image when called in a screen
   Stack.Navigator - sets the initial page the app loads onto the Login screen the Login screen
   Stack.Screen - allows the page to be used in the navigator
 */
@@ -47,7 +49,6 @@ function App() {
         <Stack.Screen name="Comments" component={Form5} />
         <Stack.Screen name="Confirm" component={Form6} />
         <Stack.Screen name="Success" component={Form7} />
-        
       </Stack.Navigator>
     </NavigationContainer>
   );
