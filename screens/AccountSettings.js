@@ -20,11 +20,13 @@ function AccountSettings({ navigation }) {
             <InnerContainer>
                 <PageTitle>Account Settings</PageTitle>
                 <Text>{'\n'}</Text>
-                <Button title="Reports" onPress={() => navigation.navigate('Reports')}/>
-                <Text>{'\n'}</Text>
                 <Button title="Invite ID Management" onPress={() => navigation.navigate('Invite ID Management')}/>
                 <Text>{'\n'}</Text>
-                <Button title="Subscription Management" onPress={() => navigation.navigate('Subscription Management')}/>
+                <Button title="Report Receipt Designees" onPress={() => navigation.navigate('Designated Admins')}/>
+                <Text>{'\n'}</Text>
+                <Button title="Account Details" onPress={() => navigation.navigate('Account Details')}/>
+                <Text>{'\n'}</Text>
+                <Button title="Subscribe for functionality" onPress={() => navigation.navigate('Subscription Management')}/>
             </InnerContainer>
         </StyledContainer>
     )

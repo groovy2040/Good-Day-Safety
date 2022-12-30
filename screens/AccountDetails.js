@@ -11,18 +11,18 @@ import {
 } from '../components/styles';
 
 /*
-    This page will allow the logged in user to manage their modules.
+    This page will allow the user to create an account to use the app.
 */
-function Reports({ navigation }) {
+function AccountDetails({ navigation }) {
     return (
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Reports</PageTitle>
-                <Button title="Settings" onPress={() => navigation.navigate('Account Settings')}/>
+                <PageTitle>Create an Account</PageTitle>
             </InnerContainer>
+            <Button title="Create Account" onPress={() => navigation.navigate('Home')}/>
         </StyledContainer>
     )
 }
 
-export default Reports;
+export default AccountDetails;

@@ -21,6 +21,10 @@ function Form7({ navigation }) {
             <Button title="Back To Home" onPress={() => navigation.navigate('Home')}/>
         </StyledContainer>
     )
-}
 
+    submit = () => {
+        alert('This Report has been sent successfully!');
+    };
+}
+//this.submit for making an alert
 export default Form7;

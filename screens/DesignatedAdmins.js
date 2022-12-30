@@ -11,19 +11,18 @@ import {
 } from '../components/styles';
 
 /*
-    This page will allow the logged in user to manage their modules.
+    This page will allow the user to create an account to use the app.
 */
-function Modules({ navigation }) {
+function DesignatedAdmins({ navigation }) {
     return (
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Modules</PageTitle>
-                <Button title="Test Module" onPress={() => navigation.navigate('Account Settings')}/>
+                <PageTitle>Create an Account</PageTitle>
             </InnerContainer>
-            <Button title="Go to The Anonymous Report Form" onPress={() => navigation.navigate('Form Start')}/>
+            <Button title="Create Account" onPress={() => navigation.navigate('Home')}/>
         </StyledContainer>
     )
 }
 
-export default Modules;
+export default DesignatedAdmins;
