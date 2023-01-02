@@ -24,6 +24,7 @@ import Form7 from './screens/Form7'
 import Loginpage from './screens/Loginpage'
 import Registration from './screens/Registration'
 
+
 const Stack = createNativeStackNavigator();
 
 /*

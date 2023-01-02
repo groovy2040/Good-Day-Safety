@@ -1,31 +1,35 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
+import RadioForm from 'react-native-simple-radio-button';
+import React, { useState } from "react";
+import { Text } from 'react-native';
 
-import { 
-    InnerContainer,
-    StyledContainer,
-    PageTitle,
-    Subtitle,
-    StyledFormArea,
-    TextBoxStyleBig,
-    designs
-} from '../components/styles';
 
-function Form3({ navigation }) {
-    const [text, onChangeText] = React.useState();
+export default function Form3() {
+  const [chosenOption, setChosenOption] = useState(); //will store our current user options
+  const options = [
+    { label: 'Vehicle, Machine or Tool', },
+    { label: 'Electrical',},
+    { label: 'Flammable or Explosion',},
+    { label: 'Breathing',},
+    { label: 'Cutting or Stabbing',},
+    { label: 'Overhead',},
+    { label: 'Struck or Hit By',},
+    { label: 'Unguarded Opening or Edge',},
+    { label: 'Uneven Surface or Tripping',},
+    { label: 'Slippery',},
+    { label: 'Unlit Area',},
+    { label: 'Other - Describe in Comment Section',},
 
-    return (
-        <View style={designs.container}>
-            <StatusBar style="dark" />
-            <InnerContainer>
-                <PageTitle>Please specify the type of unsafe condition{"\n"}{"\n"}</PageTitle>
-            </InnerContainer>
-            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
-                    <Text style={designs.loginText}>Next</Text> 
-            </TouchableOpacity>
-        </View>
-    )
+  ]; //create our options for radio group
+  return (
+    <View>
+      <Text> {chosenOption}</Text>
+      <RadioForm
+        radio_props={options}
+        initial={0} //initial value of this group
+        onPress={(value) => {
+        }} //if the user changes options, set the new value
+      />
+    </View>
+  );
 }
-
-export default Form3;
