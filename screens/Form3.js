@@ -2,6 +2,7 @@ import { View } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import React, { useState } from "react";
 import { Text } from 'react-native';
+import { PageTitle } from '../components/styles';
 
 
 export default function Form3() {
@@ -23,7 +24,7 @@ export default function Form3() {
   ]; //create our options for radio group
   return (
     <View>
-      <Text> {chosenOption}</Text>
+      <PageTitle>Unsafe Conditions</PageTitle>
       <RadioForm
         radio_props={options}
         initial={0} //initial value of this group
