@@ -32,7 +32,7 @@ function Login({ navigation }) {
                 <Text>{'\n'}</Text>
                 <Button title="Create Account" onPress={() => navigation.navigate('Create an Account')}/>
                 <Text>{'\n'}</Text>
-                <Button title="Login" onPress={() => navigation.navigate('Reports')}/>
+                <Button title="Login" onPress={() => navigation.navigate('Login page')}/>
                 <Text>{'\n'}</Text>
                 <TextInput
                     style={TextBoxStyle.input}
