@@ -21,7 +21,7 @@ export default function LoginPage({ navigation }) {
 		<View style={designs.inputView}>
 			<TextInput
 			style={designs.TextInput}
-			placeholder="Email."
+			placeholder="Email"
 			placeholderTextColor="#003f5c"
 			onChangeText={(email) => setEmail(email)}
 			/> 
@@ -29,7 +29,7 @@ export default function LoginPage({ navigation }) {
 		<View style={designs.inputView}>
 			<TextInput
 			style={designs.TextInput}
-			placeholder="Password."
+			placeholder="Password"
 			placeholderTextColor="#003f5c"
 			secureTextEntry={true}
 			onChangeText={(password) => setPassword(password)}

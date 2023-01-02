@@ -141,7 +141,7 @@ export const designs = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 20,
     backgroundColor: "#1e90ff",
   },
   Button: {
