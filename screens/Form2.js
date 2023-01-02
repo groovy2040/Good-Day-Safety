@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Text, Button, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { 
@@ -9,39 +9,51 @@ import {
     PageTitle,
     Subtitle,
     StyledFormArea,
-    TextBoxStyle
+    TextBoxStyle,
+    designs
 } from '../components/styles';
 
 function Form2({ navigation }) {
     const [text, onChangeText] = React.useState();
 
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Please specify the location of the unsafe condition</PageTitle>
                 <Subtitle>Project Name:</Subtitle>
-                <TextInput
-                    style={TextBoxStyle.input}
+                <View style={designs.inputView}>
+                    <TextInput
+                    style={designs.TextInput}
                     value={text}
                     placeholder="Please specify here"
-                    maxLength={50} />
+                    maxLength={50}
+                    /> 
+                </View>
                 <Subtitle>Floor Number:</Subtitle>
-                <TextInput
-                    style={TextBoxStyle.input}
+                <View style={designs.inputView}>
+                    <TextInput
+                    style={designs.TextInput}
                     numeric
                     placeholder="Please specify here"
                     keyboardType="numeric"
-                    maxLength={50} />
+                    maxLength={50}
+                    /> 
+                </View>
                 <Subtitle>Section of the Floor (North, East, West, South):</Subtitle>
-                <TextInput
-                    style={TextBoxStyle.input}
+                <View style={designs.inputView}>
+                    <TextInput
+                    style={designs.TextInput}
                     value={text}
                     placeholder="Please specify here"
-                    maxLength={50} />
+                    maxLength={50}
+                    /> 
+                </View>
             </InnerContainer>
-            <Button title="Next" onPress={() => navigation.navigate('Specify')} />
-        </StyledContainer>
+            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Specify')}>
+                    <Text style={designs.loginText}>Next</Text> 
+            </TouchableOpacity>
+        </View>
     )
 }
 

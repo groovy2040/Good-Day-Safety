@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput } from 'react-native';
+import { Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
 
 import { 
     InnerContainer,
@@ -8,27 +8,23 @@ import {
     PageTitle,
     Subtitle,
     StyledFormArea,
-    TextBoxStyleBig
+    TextBoxStyleBig,
+    designs
 } from '../components/styles';
 
 function Form3({ navigation }) {
     const [text, onChangeText] = React.useState();
 
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Please specify the type of unsafe condition{"\n"}{"\n"}</PageTitle>
-                <TextInput
-                    style={TextBoxStyleBig.input}
-                    onChangeText={onChangeText}
-                    value={text}
-                    placeholder="Please specify here"
-                    multiline
-                    maxLength={200} />
             </InnerContainer>
-            <Button title="Next" onPress={() => navigation.navigate('Photo')}/>
-        </StyledContainer>
+            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
+                    <Text style={designs.loginText}>Next</Text> 
+            </TouchableOpacity>
+        </View>
     )
 }
 

@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button, Image } from 'react-native';
+import { Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 import { 
@@ -8,7 +8,8 @@ import {
     StyledContainer,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
+    designs
 } from '../components/styles';
 
 /*
@@ -30,18 +31,21 @@ function Form4({ navigation }) {
     };
 
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Attach a single photo of the unsafe condition *</PageTitle>
-                <Subtitle>* This step is mandatory.</Subtitle>
+                <PageTitle>Attach a single photo of the unsafe condition</PageTitle>
+                <Subtitle>This step is mandatory.</Subtitle>
                 <Text>{"\n"}</Text>
-                {image && <Image source={{ uri : image}} style={{ width:400, height: 600}}/>}
-                <Text>{"\n"}</Text>
-                <Button title="Choose a photo from your library" onPress={pickImage}/>
+                {image && <Image source={{ uri : image}} style={{ width:"90%", height: "50%"}}/>}
+                <TouchableOpacity style={designs.Button} onPress={pickImage}>
+                    <Text style={designs.loginText}>Choose a Photo</Text> 
+                </TouchableOpacity>
             </InnerContainer>
-            <Button title="Next" onPress={() => navigation.navigate('Comments')}/>
-        </StyledContainer>
+            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Comments')}>
+                    <Text style={designs.loginText}>Next</Text> 
+            </TouchableOpacity>
+        </View>
     )
 }
 

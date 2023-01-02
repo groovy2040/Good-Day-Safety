@@ -7,7 +7,8 @@ import {
     StyledContainer,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
+    designs
 } from '../components/styles';
 
 /*
@@ -15,13 +16,12 @@ import {
 */
 function AccountDetails({ navigation }) {
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Create an Account</PageTitle>
+                <PageTitle>Account Details</PageTitle>
             </InnerContainer>
-            <Button title="Create Account" onPress={() => navigation.navigate('Home')}/>
-        </StyledContainer>
+        </View>
     )
 }
 

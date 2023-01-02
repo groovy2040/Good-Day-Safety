@@ -1,24 +1,27 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View } from 'react-native';
+import { Text, Button, View, TouchableOpacity } from 'react-native';
 
 import { 
     InnerContainer,
     StyledContainer,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
+    designs
 } from '../components/styles';
 
 function Form6({ navigation }) {
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Confirm your responses:</PageTitle>
             </InnerContainer>
-            <Button title="Submit" onPress={() => navigation.navigate('Success')}/>
-        </StyledContainer>
+            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Success')}>
+                    <Text style={designs.loginText}>Next</Text> 
+            </TouchableOpacity>
+        </View>
     )
 }
 

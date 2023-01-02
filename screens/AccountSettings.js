@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View } from 'react-native';
+import { Text, Button, View, TouchableOpacity } from 'react-native';
 
 import { 
     InnerContainer,
@@ -8,6 +8,7 @@ import {
     PageTitle,
     Subtitle,
     StyledFormArea,
+    designs
 } from '../components/styles';
 
 /*
@@ -15,20 +16,25 @@ import {
 */
 function AccountSettings({ navigation }) {
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Account Settings</PageTitle>
                 <Text>{'\n'}</Text>
-                <Button title="Invite ID Management" onPress={() => navigation.navigate('Invite ID Management')}/>
-                <Text>{'\n'}</Text>
-                <Button title="Report Receipt Designees" onPress={() => navigation.navigate('Designated Admins')}/>
-                <Text>{'\n'}</Text>
-                <Button title="Account Details" onPress={() => navigation.navigate('Account Details')}/>
-                <Text>{'\n'}</Text>
-                <Button title="Subscribe for functionality" onPress={() => navigation.navigate('Subscription Management')}/>
+                <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Invite ID Management')}>
+                    <Text style={designs.loginText}>Invite ID Management</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Designated Admins')}>
+                    <Text style={designs.loginText}>Report Receipt Designees</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Account Details')}>
+                    <Text style={designs.loginText}>Account Details</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Subscription Management')}>
+                    <Text style={designs.loginText}>Subscribe for functionality</Text>
+                </TouchableOpacity>
             </InnerContainer>
-        </StyledContainer>
+        </View>
     )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput } from 'react-native';
+import { Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
 
 import { 
     InnerContainer,
@@ -8,27 +8,33 @@ import {
     PageTitle,
     Subtitle,
     StyledFormArea,
-    TextBoxStyleBig
+    TextBoxStyleBig,
+    designs
 } from '../components/styles';
 
 function Form5({ navigation }) {
     const [text, onChangeText] = React.useState();
 
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Are there any other comments you would like to make?{"\n"}{"\n"}</PageTitle>
-                <TextInput
-                    style={TextBoxStyleBig.input}
+                <View style={designs.inputViewLarge}>
+                    <TextInput
+                    style={designs.TextInput}
                     onChangeText={onChangeText}
                     value={text}
-                    placeholder="Please specify here"
+                    placeholder="Add Comments Here"
                     multiline
-                    maxLength={200} />
+                    maxLength={200}
+                    /> 
+                </View>
             </InnerContainer>
-            <Button title="Next" onPress={() => navigation.navigate('Confirm')}/>
-        </StyledContainer>
+            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Confirm')}>
+                    <Text style={designs.loginText}>Next</Text> 
+            </TouchableOpacity>
+        </View>
     )
 }
 

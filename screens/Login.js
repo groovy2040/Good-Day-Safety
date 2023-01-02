@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput } from 'react-native';
+import { Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
@@ -12,7 +12,8 @@ import {
     PageTitle,
     Subtitle,
     StyledFormArea,
-    TextBoxStyle
+    TextBoxStyle,
+    designs
 } from '../components/styles';
 
 /*
@@ -24,24 +25,31 @@ import {
 */
 function Login({ navigation }) {
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageLogo resizeMode="cover" source={require('./../assets/favicon.png')} />
                 <PageTitle>Good Day App</PageTitle>
+                <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Create an Account')}>
+                    <Text style={designs.loginText}>Create Account</Text> 
+                </TouchableOpacity>
+                <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Login page')}>
+                    <Text style={designs.loginText}>Login</Text> 
+                </TouchableOpacity>
                 <Text>{'\n'}</Text>
-                <Button title="Create Account" onPress={() => navigation.navigate('Create an Account')}/>
                 <Text>{'\n'}</Text>
-                <Button title="Login" onPress={() => navigation.navigate('Login page')}/>
-                <Text>{'\n'}</Text>
-                <TextInput
-                    style={TextBoxStyle.input}
+                <View style={designs.inputView}>
+                    <TextInput
+                    style={designs.TextInput}
                     numeric
                     placeholder="Enter your Invite ID here"
                     keyboardType="numeric"
-                    maxLength={6} />
-                <Text>{'\n'}</Text>
-                <Button title="Submit Invite ID" onPress={() => navigation.navigate('Form Start')}/>
+                    maxLength={6}
+                    /> 
+                </View>
+                <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Form Start')}>
+                    <Text style={designs.loginText}>Submit Invite ID</Text> 
+                </TouchableOpacity>
                 <Formik
                     initialValues={{email: '', password: ''}}
                     onSubmit={(values) => {
@@ -49,7 +57,7 @@ function Login({ navigation }) {
                     }}
                 />
             </InnerContainer>
-        </StyledContainer>
+        </View>
         
     
     );

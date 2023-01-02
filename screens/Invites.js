@@ -7,7 +7,8 @@ import {
     StyledContainer,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
+    designs
 } from '../components/styles';
 
 /*
@@ -15,12 +16,12 @@ import {
 */
 function Invites({ navigation }) {
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Invite ID Management</PageTitle>
             </InnerContainer>
-        </StyledContainer>
+        </View>
     )
 }
 

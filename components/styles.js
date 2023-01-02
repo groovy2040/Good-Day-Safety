@@ -12,7 +12,8 @@ export const Colors = {
     darkLight: "#9CA3AF",
     brand: "#012d90",
     green: "#10B981",
-    red: "EF4444",
+    red: "#EF4444",
+    teal: "#1E90FF"
 };
 
 const { primary, secondary, tertiary, darkLight, brand, green, red} = Colors;
@@ -36,7 +37,7 @@ export const PageLogo = styled.Image`
 `
 
 export const PageTitle = styled.Text`
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     font-weight: bold;
     color: ${brand};
@@ -44,8 +45,10 @@ export const PageTitle = styled.Text`
 `
 
 export const Subtitle = styled.Text`
-    font-size:20px;
-    margin-bottom; 20px;
+    font-size:18px;
+    padding: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
     letter-spacing: 1px;
     font-weight: bold;
     color: ${tertiary};
@@ -107,10 +110,18 @@ export const designs = StyleSheet.create({
     justifyContent: "center",
   },
   inputView: {
-    backgroundColor: "#FFC0CB",
+    backgroundColor: "#e7e7e7",
     borderRadius: 30,
     width: "70%",
     height: 45,
+    marginBottom: 20,
+    alignItems: "center",
+  },
+  inputViewLarge: {
+    backgroundColor: "#e7e7e7",
+    borderRadius: 30,
+    width: "80%",
+    height: "50%",
     marginBottom: 20,
     alignItems: "center",
   },
@@ -118,19 +129,29 @@ export const designs = StyleSheet.create({
     height: 50,
     flex: 1,
     padding: 10,
-    marginLeft: 20,
+    textAlign: "center",
   },
   forgot_button: {
     height: 30,
     marginBottom: 30,
   },
   loginBtn: {
-    width: "80%",
+    width: "50%",
     borderRadius: 25,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#FF1493",
+    backgroundColor: "#1e90ff",
+  },
+  Button: {
+    width: "50%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#1e90ff",
+    marginBottom: "5%",
   },
 });

@@ -1,13 +1,14 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View } from 'react-native';
+import { Text, Button, View, TouchableOpacity } from 'react-native';
 
 import { 
     InnerContainer,
     StyledContainer,
     PageTitle,
     Subtitle,
-    StyledFormArea
+    StyledFormArea,
+    designs
 } from '../components/styles';
 
 /*
@@ -15,13 +16,15 @@ import {
 */
 function Reports({ navigation }) {
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Reports</PageTitle>
-                <Button title="Settings" onPress={() => navigation.navigate('Account Settings')}/>
+                <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Account Settings')}>
+                    <Text style={designs.loginText}>Settings</Text> 
+                </TouchableOpacity>
             </InnerContainer>
-        </StyledContainer>
+        </View>
     )
 }
 

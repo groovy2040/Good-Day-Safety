@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View } from 'react-native';
+import { Text, Button, View, TouchableOpacity } from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 import { 
@@ -9,7 +9,8 @@ import {
     PageTitle,
     Subtitle,
     StyledFormArea,
-    CheckBox
+    CheckBox,
+    designs
 } from '../components/styles';
 
 //Still a work in progress!
@@ -17,11 +18,11 @@ function Form1({ navigation }) {
     const [isChecked, setChecked] = useState(false);
 
     return (
-        <StyledContainer>
+        <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Can you make this a SAFE condition? *</PageTitle>
-                <Subtitle>* if possible, please ensure that this condition is not accessible by others and proceed with your report.{"\n"}{"\n"}</Subtitle>
+                <PageTitle>Can you make this a SAFE condition?</PageTitle>
+                <Subtitle>If possible, please ensure that this condition is not accessible by others and proceed with your report.{"\n"}{"\n"}</Subtitle>
                 <View style={CheckBox.section}>
                     <Checkbox
                     style={CheckBox.checkbox}
@@ -44,8 +45,10 @@ function Form1({ navigation }) {
                 </View>
                 </View>
             </InnerContainer>
-            <Button title="Next" onPress={() => navigation.navigate('Location')}/>
-        </StyledContainer>
+            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Location')}>
+                    <Text style={designs.loginText}>Next</Text> 
+            </TouchableOpacity>
+        </View>
     )
 }
 
