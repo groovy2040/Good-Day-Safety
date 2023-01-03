@@ -1,11 +1,21 @@
-import { View } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import React, { useState } from "react";
-import { Text } from 'react-native';
-import { PageTitle } from '../components/styles';
+import { StatusBar } from 'expo-status-bar';
+import { Text, Button, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
+import { 
+    InnerContainer,
+    StyledContainer,
+    PageTitle,
+    Subtitle,
+    StyledFormArea,
+    TextBoxStyle,
+    designs
+} from '../components/styles';
 
 
-export default function Form3() {
+export default function Form3({navigation}) {
   const [chosenOption, setChosenOption] = useState(); //will store our current user options
   const options = [
     { label: 'Vehicle, Machine or Tool', },
@@ -23,14 +33,21 @@ export default function Form3() {
 
   ]; //create our options for radio group
   return (
+    <InnerContainer>
     <View>
-      <PageTitle>Unsafe Conditions</PageTitle>
+      <PageTitle>Unsafe Conditions:</PageTitle>
       <RadioForm
         radio_props={options}
         initial={0} //initial value of this group
         onPress={(value) => {
         }} //if the user changes options, set the new value
       />
+      <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
+                    <Text style={designs.loginText}>Next</Text> 
+            </TouchableOpacity>
     </View>
-  );
+    </InnerContainer>
+    
+    
+  )
 }

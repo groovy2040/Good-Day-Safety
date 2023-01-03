@@ -154,4 +154,14 @@ export const designs = StyleSheet.create({
     backgroundColor: "#1e90ff",
     marginBottom: "5%",
   },
+    Three: {
+      width: "20%",
+      borderRadius: 25,
+      height: 20,
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 40,
+      backgroundColor: "#1e90ff",
+      marginBottom: "5%",
+  },
 });
