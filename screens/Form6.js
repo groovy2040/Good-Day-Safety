@@ -19,7 +19,7 @@ function Form6({ navigation }) {
                 <PageTitle>Confirm your responses:</PageTitle>
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Success')}>
-                    <Text style={designs.loginText}>Next</Text> 
+                    <Text style={designs.loginText}>Confirm</Text> 
             </TouchableOpacity>
         </View>
     )

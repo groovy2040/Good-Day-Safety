@@ -16,37 +16,39 @@ import {
 
 
 export default function Form3({navigation}) {
-  const [chosenOption, setChosenOption] = useState(); //will store our current user options
-  const options = [
-    { label: 'Vehicle, Machine or Tool', },
-    { label: 'Electrical',},
-    { label: 'Flammable or Explosion',},
-    { label: 'Breathing',},
-    { label: 'Cutting or Stabbing',},
-    { label: 'Overhead',},
-    { label: 'Struck or Hit By',},
-    { label: 'Unguarded Opening or Edge',},
-    { label: 'Uneven Surface or Tripping',},
-    { label: 'Slippery',},
-    { label: 'Unlit Area',},
-    { label: 'Other - Describe in Comment Section',},
+	const [chosenOption, setChosenOption] = useState(); //will store our current user options
+	const options = [
+			{ label: 'Vehicle, Machine or Tool', },
+			{ label: 'Electrical',},
+			{ label: 'Flammable or Explosion',},
+			{ label: 'Breathing',},
+			{ label: 'Cutting or Stabbing',},
+			{ label: 'Overhead',},
+			{ label: 'Struck or Hit By',},
+			{ label: 'Unguarded Opening or Edge',},
+			{ label: 'Uneven Surface or Tripping',},
+			{ label: 'Slippery',},
+			{ label: 'Unlit Area',},
+			{ label: 'Other - Describe in Comment Section',},
 
-  ]; //create our options for radio group
-  return (
-    <InnerContainer>
-    <View>
-      <PageTitle>Unsafe Conditions:</PageTitle>
-      <RadioForm
-        radio_props={options}
-        initial={0} //initial value of this group
-        onPress={(value) => {
-        }} //if the user changes options, set the new value
-      />
-      <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
-                    <Text style={designs.loginText}>Next</Text> 
-            </TouchableOpacity>
-    </View>
-    </InnerContainer>
+	]; //create our options for radio group
+	return (
+    
+    <View style={designs.container}>
+		<InnerContainer>
+			<PageTitle>Unsafe Conditions:</PageTitle>
+			<RadioForm
+				radio_props={options}
+				initial={0} //initial value of this group
+				onPress={(value) => {
+				}} //if the user changes options, set the new value
+			/>
+			<TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
+							<Text style={designs.loginText}>Next</Text> 
+				</TouchableOpacity>
+			</InnerContainer>
+		</View>
+    
     
     
   )

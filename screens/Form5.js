@@ -12,6 +12,7 @@ import {
     designs
 } from '../components/styles';
 
+//do a textarea instead of a textinput
 function Form5({ navigation }) {
     const [text, onChangeText] = React.useState();
 
