@@ -1,7 +1,7 @@
 import RadioForm from 'react-native-simple-radio-button';
 import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, Three, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { 
@@ -33,21 +33,17 @@ export default function Form3({navigation}) {
 
   ]; //create our options for radio group
   return (
-    <InnerContainer>
-    <View>
-      <PageTitle>Unsafe Conditions:</PageTitle>
-      <RadioForm
-        radio_props={options}
-        initial={0} //initial value of this group
-        onPress={(value) => {
-        }} //if the user changes options, set the new value
-      />
-      <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
-                    <Text style={designs.loginText}>Next</Text> 
-            </TouchableOpacity>
-    </View>
-    </InnerContainer>
-    
-    
-  )
-}
+      <View style={designs.container}>
+        <PageTitle>Unsafe Conditions:</PageTitle>
+        <RadioForm
+          radio_props={options}
+          initial={0} //initial value of this group
+          onPress={(value) => {
+          }} //if the user changes options, set the new value
+        />
+        <TouchableOpacity style={designs.Three} onPress={() =>navigation.navigate('Photo')}>
+                      <Text style={designs.loginText}>Next</Text> 
+              </TouchableOpacity>       
+      </View> 
+    )
+  }
