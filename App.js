@@ -22,6 +22,8 @@ import Form5 from './screens/Form5'
 import Form6 from './screens/Form6'
 import Form7 from './screens/Form7'
 import Loginpage from './screens/Loginpage'
+import Registration from './screens/Registration'
+
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +38,7 @@ function App() {
       <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Home" component={Login} />
         <Stack.Screen name="Login page" component={Loginpage} />
+        <Stack.Screen name="Create Account" component={Registration} />
         <Stack.Screen name="Create an Account" component={CreateAccount} />
         <Stack.Screen name="Account Settings" component={AccountSettings} />
         <Stack.Screen name="Reports" component={Reports} />

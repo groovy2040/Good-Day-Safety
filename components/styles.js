@@ -141,7 +141,7 @@ export const designs = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 20,
     backgroundColor: "#1e90ff",
   },
   Button: {
@@ -153,5 +153,15 @@ export const designs = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#1e90ff",
     marginBottom: "5%",
+  },
+    Three: {
+      width: "20%",
+      borderRadius: 25,
+      height: 20,
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 40,
+      backgroundColor: "#1e90ff",
+      marginBottom: "5%",
   },
 });

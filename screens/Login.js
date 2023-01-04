@@ -30,7 +30,7 @@ function Login({ navigation }) {
             <InnerContainer>
                 <PageLogo resizeMode="cover" source={require('./../assets/favicon.png')} />
                 <PageTitle>Good Day App</PageTitle>
-                <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Create an Account')}>
+                <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Create Account')}>
                     <Text style={designs.loginText}>Create Account</Text> 
                 </TouchableOpacity>
                 <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Login page')}>
