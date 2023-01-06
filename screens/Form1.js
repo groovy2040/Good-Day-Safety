@@ -30,7 +30,7 @@ function Form1({ navigation }) {
                     onValueChange={setChecked}
                     color={isChecked ? '#012d90' : false}
                     />
-                    <Text style={CheckBox.paragraph}>Yes, i can make this a safe condition.</Text>
+                    <Text style={CheckBox.paragraph}>Yes, I can make this a safe condition.</Text>
                 </View>
                 <View>
                     <Text>{"\n"}</Text>
@@ -41,7 +41,7 @@ function Form1({ navigation }) {
                     onValueChange={setChecked}
                     color={isChecked ? '#012d90' : false}
                     />
-                    <Text style={CheckBox.paragraph}>No, i cannot make this a safe condition.</Text>
+                    <Text style={CheckBox.paragraph}>No, I cannot make this a safe condition.</Text>
                 </View>
                 </View>
             </InnerContainer>
