@@ -57,9 +57,4 @@ function Form2({ navigation }) {
     )
 }
 
-/* WIP for making the keyboard independent of the assets on screen (like the button)
-<ScrollView>
-<KeyboardAwareScrollView>
-*/
-
 export default Form2;

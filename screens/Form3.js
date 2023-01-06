@@ -36,20 +36,18 @@ export default function Form3({navigation}) {
     
     <View style={designs.container}>
 		<InnerContainer>
-			<PageTitle>Unsafe Conditions:</PageTitle>
+			<PageTitle>Please specify the type of the unsafe condition</PageTitle>
 			<RadioForm
 				radio_props={options}
 				initial={"NULL"} //initial value of this group
 				onPress={(value) => {
 				}} //if the user changes options, set the new value
 			/>
-			<TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
-							<Text style={designs.loginText}>Next</Text> 
-				</TouchableOpacity>
-			</InnerContainer>
-		</View>
-    
-    
-    
+			
+		</InnerContainer>
+		<TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
+			<Text style={designs.loginText}>Next</Text> 
+		</TouchableOpacity>
+	</View>
   )
 }
