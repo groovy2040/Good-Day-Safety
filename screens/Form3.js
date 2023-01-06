@@ -37,7 +37,7 @@ export default function Form3({navigation}) {
         <PageTitle>Unsafe Conditions:</PageTitle>
         <RadioForm
           radio_props={options}
-          initial={0} //initial value of this group
+          initial={null} //initial value of this group
           onPress={(value) => {
           }} //if the user changes options, set the new value
         />
