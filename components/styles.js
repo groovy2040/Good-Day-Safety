@@ -122,6 +122,8 @@ export const designs = StyleSheet.create({
     borderRadius: 30,
     width: "80%",
     height: "50%",
+    marginBottom: 20,
+    alignItems: "center",
   },
   TextInput: {
     height: 50,
@@ -153,30 +155,13 @@ export const designs = StyleSheet.create({
     marginBottom: "5%",
   },
     Three: {
-      width: "20%",
-      borderRadius: 25,
-      height: 20,
+      width: "50%",
+      borderRadius: 50,
+      height: 30,
       alignItems: "center",
       justifyContent: "center",
-      marginTop: 40,
+      marginTop: 10,
       backgroundColor: "#1e90ff",
       marginBottom: "5%",
   },
 });
-
-export const AreaText = StyleSheet.create({
-  textAreaContainer: {
-    paddingTop: Constants.statusBarHeight + 20,
-    padding: 8,
-    backgroundColor: "#e7e7e7",
-    borderRadius: 30,
-    width: "80%",
-    height: "50%",
-  },
-  textArea: {
-    padding: 15,
-    width: "95%",
-    height: "50%",
-    borderRadius: 30,
-  }
-})
