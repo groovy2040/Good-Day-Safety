@@ -23,6 +23,7 @@ import Form6 from './screens/Form6'
 import Form7 from './screens/Form7'
 import Loginpage from './screens/Loginpage'
 import Registration from './screens/Registration'
+import CreateID from './screens/CreateID';
 
 
 const Stack = createNativeStackNavigator();
@@ -42,7 +43,7 @@ function App() {
         <Stack.Screen name="Create an Account" component={CreateAccount} />
         <Stack.Screen name="Account Settings" component={AccountSettings} />
         <Stack.Screen name="Reports" component={Reports} />
-        <Stack.Screen name="Invite ID Management" component={Invites} />
+        <Stack.Screen name="Invite ID Management" component={CreateID} />
         <Stack.Screen name="Subscription Management" component={Subscription} />
         <Stack.Screen name="Designated Admins" component={DesignatedAdmins} />
         <Stack.Screen name="Account Details" component={AccountDetails} />
