@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -12,9 +12,13 @@ import {
     TextBoxStyle,
     designs
 } from '../components/styles';
+import { storeData } from '../utils/storage';
 
 function Form2({ navigation }) {
-    const [text, onChangeText] = React.useState();
+    const [data, setData] = useState({})
+
+    storeData('form2answer', data)
+    
 
     return (
         <View style={designs.container}>
@@ -25,7 +29,8 @@ function Form2({ navigation }) {
                 <View style={designs.inputView}>
                     <TextInput
                     style={designs.TextInput}
-                    value={text}
+                    value={data.project}
+                    onChangeText={(project) => setData({...data, project})}
                     placeholder="Please specify here"
                     maxLength={50}
                     /> 
@@ -35,6 +40,8 @@ function Form2({ navigation }) {
                     <TextInput
                     style={designs.TextInput}
                     numeric
+                    value={data.floor}
+                    onChangeText={(floor) => setData({...data, floor})}
                     placeholder="Please specify here"
                     keyboardType="numeric"
                     maxLength={50}
@@ -44,7 +51,8 @@ function Form2({ navigation }) {
                 <View style={designs.inputView}>
                     <TextInput
                     style={designs.TextInput}
-                    value={text}
+                    value={data.section}
+                    onChangeText={(section) => setData({...data, section})}
                     placeholder="Please specify here"
                     maxLength={50}
                     /> 

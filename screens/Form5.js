@@ -11,9 +11,12 @@ import {
     TextBoxStyleBig,
     designs
 } from '../components/styles';
+import { storeData } from '../utils/storage';
 
 function Form5({ navigation }) {
-    const [text, onChangeText] = React.useState();
+    const [answer, setAnswer] = React.useState();
+
+    storeData('form5answer', {answer})
 
     return (
         <View style={designs.container}>
@@ -23,8 +26,8 @@ function Form5({ navigation }) {
                 <View style={designs.inputViewLarge}>
                     <TextInput
                     style={designs.TextInput}
-                    onChangeText={onChangeText}
-                    value={text}
+                    onChangeText={setAnswer}
+                    value={answer}
                     placeholder="Add Comments Here"
                     multiline
                     maxLength={200}
