@@ -32,18 +32,19 @@ function Form6({ navigation }) {
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Confirm your responses:</PageTitle>
-                <Text>1. Can you make this a safe condition: {data.choice}</Text>
-                <Text>2. Project Name: {data.project}</Text>
-                <Text>3. Project Floor: {data.floor}</Text>
-                <Text>4. Section Area: {data.section}</Text>
-                <Text>5. Unsafe Conditions: {data.condition}</Text>
-                <Text>6. Comments: {data.answer}</Text>
+                <Text>1. Can you make this a <Text style={designs.boldText}>safe condition: </Text>{data.choice}</Text>
+                <Text>2. <Text style={designs.boldText}>Project Name: </Text>{data.project}</Text>
+                <Text>3. <Text style={designs.boldText}>Project Floor: </Text>{data.floor}</Text>
+                <Text>4. <Text style={designs.boldText}>Section Area: </Text>{data.section}</Text>
+                <Text>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{data.condition}</Text>
+                <Text>6. <Text style={designs.boldText}>Comments: </Text>{data.answer}</Text>
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Success')}>
-                    <Text style={designs.loginText}>Next</Text> 
+                    <Text style={designs.loginText}>Next</Text>
             </TouchableOpacity>
         </View>
     )
 }
+
 
 export default Form6;

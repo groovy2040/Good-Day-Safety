@@ -163,5 +163,8 @@ export const designs = StyleSheet.create({
       marginTop: 10,
       backgroundColor: "#1e90ff",
       marginBottom: "5%",
+    },
+    boldText: {
+      fontWeight: 'bold',
   },
 });
