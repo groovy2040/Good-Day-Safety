@@ -18,14 +18,3 @@ export const getData = async (key) => {
     // error reading value
   }
 }
-
-
-export const storeForm = async (key, value) => {
-  try {
-    const jsonValue = await AsyncStorage.getItem('form')
-    return jsonValue != null ? JSON.stringify({ [key]: value,  ...JSON.parse(jsonValue)}) : null;
-    
-  } catch (error) {
-    
-  }
-}
