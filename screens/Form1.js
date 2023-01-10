@@ -37,7 +37,7 @@ function Form1({ navigation }) {
                 <PageTitle>Can you make this a SAFE condition?</PageTitle>
                 <Subtitle>If possible, please ensure that this condition is not accessible by others and proceed with your report.{"\n"}{"\n"}</Subtitle>
                 <RadioForm
-                radioStyle={{marginVertical: 30, marginTop: 0, marginBottom: 50}}
+                radioStyle={{marginTop: 0, marginBottom: 50}}
                 radio_props={options}
                 initial={null} //initial value of this group
                 onPress={(value) => {
