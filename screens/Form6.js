@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TouchableOpacity } from 'react-native';
-import { getData } from '../utils/Storage';
+import { getData } from '../utils/storage';
 
 import { 
     InnerContainer,
