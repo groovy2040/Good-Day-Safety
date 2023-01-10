@@ -121,7 +121,7 @@ export const designs = StyleSheet.create({
     backgroundColor: "#e7e7e7",
     borderRadius: 30,
     width: "80%",
-    height: "50%",
+    height: "70%",
     marginBottom: 20,
     alignItems: "center",
   },
