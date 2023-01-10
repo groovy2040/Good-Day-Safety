@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { storeData } from '../utils/storage';
 
 import { 
     InnerContainer,
@@ -14,7 +15,7 @@ import {
     designs
 } from '../components/styles';
 
-import { storeData } from '../utils/storage';
+
 
 
 export default function Form3({navigation}) {
