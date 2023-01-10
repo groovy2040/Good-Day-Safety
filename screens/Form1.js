@@ -31,12 +31,13 @@ function Form1({ navigation }) {
     storeData('form1answer', data)
 
     return (
-        <View style={designs.container}>
+        <View style={[designs.container]}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Can you make this a SAFE condition?</PageTitle>
                 <Subtitle>If possible, please ensure that this condition is not accessible by others and proceed with your report.{"\n"}{"\n"}</Subtitle>
                 <RadioForm
+                radioStyle={{marginTop: 0, marginBottom: 50}}
                 radio_props={options}
                 initial={null} //initial value of this group
                 onPress={(value) => {
