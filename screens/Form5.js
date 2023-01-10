@@ -19,8 +19,8 @@ function Form5({ navigation }) {
     storeData('form5answer', {answer})
 
     return (
-        <ScrollView contentContainerStyle={{flexGrow: 1}}>
-                    <View style={designs.container}>
+        <ScrollView>
+                <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Are there any other comments you would like to make?{"\n"}{"\n"}</PageTitle>
@@ -31,11 +31,11 @@ function Form5({ navigation }) {
                     value={answer}
                     placeholder="Add Comments Here"
                     multiline
-                    maxLength={200}
+                    maxLength={250}
                     /> 
                 </View>
             </InnerContainer>
-            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Confirm')}>
+            <TouchableOpacity style={designs.Comment} onPress={() =>navigation.navigate('Confirm')}>
                     <Text style={designs.loginText}>Next</Text> 
             </TouchableOpacity>
         </View>

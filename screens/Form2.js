@@ -24,8 +24,7 @@ function Form2({ navigation }) {
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
                     <View style={designs.container}>
-
-            <StatusBar style="dark" />
+                <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Please specify the location of the unsafe condition</PageTitle>
                 <Subtitle>Project Name:</Subtitle>
