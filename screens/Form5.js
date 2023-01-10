@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, Button, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { storeData } from '../utils/Storage';
 
 import { 
     InnerContainer,
@@ -11,7 +12,6 @@ import {
     TextBoxStyleBig,
     designs
 } from '../components/styles';
-import { storeData } from '../utils/storage';
 
 function Form5({ navigation }) {
     const [answer, setAnswer] = React.useState();
@@ -19,7 +19,8 @@ function Form5({ navigation }) {
     storeData('form5answer', {answer})
 
     return (
-        <View style={designs.container}>
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+                    <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Are there any other comments you would like to make?{"\n"}{"\n"}</PageTitle>
@@ -38,6 +39,7 @@ function Form5({ navigation }) {
                     <Text style={designs.loginText}>Next</Text> 
             </TouchableOpacity>
         </View>
+        </ScrollView>
     )
 }
 

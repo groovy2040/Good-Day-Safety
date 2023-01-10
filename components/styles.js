@@ -114,7 +114,7 @@ export const designs = StyleSheet.create({
     borderRadius: 30,
     width: "70%",
     height: 45,
-    marginBottom: 20,
+    marginVertical: 20,
     alignItems: "center",
   },
   inputViewLarge: {
@@ -141,7 +141,7 @@ export const designs = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginVertical: 20,
     backgroundColor: "#1e90ff",
   },
   Button: {
@@ -166,5 +166,15 @@ export const designs = StyleSheet.create({
     },
     boldText: {
       fontWeight: 'bold',
-  },
+    },
+    responseText: {
+      fontSize: 20,
+      textAlign: 'left'
+    },
+    responseContainer: {
+      textAlign: 'left',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      padding: '5%',
+    }
 });

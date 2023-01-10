@@ -36,8 +36,6 @@ function Login({ navigation }) {
                 <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Login page')}>
                     <Text style={designs.loginText}>Login</Text> 
                 </TouchableOpacity>
-                <Text>{'\n'}</Text>
-                <Text>{'\n'}</Text>
                 <View style={designs.inputView}>
                     <TextInput
                     style={designs.TextInput}

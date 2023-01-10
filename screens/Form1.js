@@ -3,6 +3,7 @@ import RadioForm from 'react-native-simple-radio-button';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TouchableOpacity } from 'react-native';
 import Checkbox from 'expo-checkbox';
+import { storeData } from '../utils/Storage';
 
 import { 
     InnerContainer,
@@ -14,7 +15,7 @@ import {
     designs
 } from '../components/styles';
 
-import { storeData } from '../utils/storage';
+
 
 //Still a work in progress!
 function Form1({ navigation }) {
