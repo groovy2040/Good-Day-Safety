@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TouchableOpacity } from 'react-native';
+import { getData } from '../utils/Storage';
 
 import { 
     InnerContainer,
@@ -10,8 +11,7 @@ import {
     StyledFormArea,
     designs
 } from '../components/styles';
-import { getData } from '../utils/storage';
-import react from 'react';
+
 
 function Form6({ navigation }) {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import { storeData } from '../utils/storage';
+import { storeData } from '../utils/Storage';
 
 import { 
     InnerContainer,
