@@ -21,12 +21,14 @@ function Form2({ navigation }) {
     
 
     return (
-        <View style={designs.container}>
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+                    <View style={designs.container}>
+
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Please specify the location of the unsafe condition</PageTitle>
                 <Subtitle>Project Name:</Subtitle>
-                <View style={designs.inputView}>
+                <View style={{...designs.inputView, marginBottom: 0, marginTop: 10}}>
                     <TextInput
                     style={designs.TextInput}
                     value={data.project}
@@ -36,7 +38,7 @@ function Form2({ navigation }) {
                     /> 
                 </View>
                 <Subtitle>Floor Number:</Subtitle>
-                <View style={designs.inputView}>
+                <View style={{...designs.inputView, marginBottom: 0, marginTop: 10}}>
                     <TextInput
                     style={designs.TextInput}
                     numeric
@@ -48,7 +50,7 @@ function Form2({ navigation }) {
                     /> 
                 </View>
                 <Subtitle>Section of the Floor (North, East, West, South):</Subtitle>
-                <View style={designs.inputView}>
+                <View style={{...designs.inputView, marginBottom: 0, marginTop: 10}}>
                     <TextInput
                     style={designs.TextInput}
                     value={data.section}
@@ -61,13 +63,11 @@ function Form2({ navigation }) {
             <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Specify')}>
                     <Text style={designs.loginText}>Next</Text> 
             </TouchableOpacity>
-        </View>
+            </View>
+        </ScrollView>
+    
     )
 }
 
-/* WIP for making the keyboard independent of the assets on screen (like the button)
-<ScrollView>
-<KeyboardAwareScrollView>
-*/
 
 export default Form2;

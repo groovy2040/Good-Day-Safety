@@ -28,16 +28,16 @@ function Form6({ navigation }) {
    })
 })
     return (
-        <View style={designs.container}>
+        <View style={{...designs.container}}>
             <StatusBar style="dark" />
-            <InnerContainer>
+            <InnerContainer style={designs.responseContainer}>
                 <PageTitle>Confirm your responses:</PageTitle>
-                <Text>1. Can you make this a <Text style={designs.boldText}>safe condition: </Text>{data.choice}</Text>
-                <Text>2. <Text style={designs.boldText}>Project Name: </Text>{data.project}</Text>
-                <Text>3. <Text style={designs.boldText}>Project Floor: </Text>{data.floor}</Text>
-                <Text>4. <Text style={designs.boldText}>Section Area: </Text>{data.section}</Text>
-                <Text>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{data.condition}</Text>
-                <Text>6. <Text style={designs.boldText}>Comments: </Text>{data.answer}</Text>
+                <Text style={designs.responseText}>1. Can you make this a <Text style={designs.boldText}>safe condition: </Text>{data.choice}</Text>
+                <Text style={designs.responseText}>2. <Text style={designs.boldText}>Project Name: </Text>{data.project}</Text>
+                <Text style={designs.responseText}>3. <Text style={designs.boldText}>Project Floor: </Text>{data.floor}</Text>
+                <Text style={designs.responseText}>4. <Text style={designs.boldText}>Section Area: </Text>{data.section}</Text>
+                <Text style={designs.responseText}>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{data.condition}</Text>
+                <Text style={designs.responseText}>6. <Text style={designs.boldText}>Comments: </Text>{data.answer}</Text>
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Success')}>
                     <Text style={designs.loginText}>Next</Text>

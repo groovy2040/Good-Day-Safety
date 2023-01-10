@@ -20,7 +20,6 @@ function AccountSettings({ navigation }) {
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Account Settings</PageTitle>
-                <Text>{'\n'}</Text>
                 <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Invite ID Management')}>
                     <Text style={designs.loginText}>Invite ID Management</Text>
                 </TouchableOpacity>
