@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../components/firebase";
 import {
     StyleSheet,
     Text,
@@ -12,6 +14,16 @@ import {
 import { designs } from "../components/styles";
 
 export default function Registration({ navigation }) {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const handleSignUp = () => {
+		createUserWithEmailAndPassword(auth, email, password)
+		.then(userCredentials => {
+			const user = userCredentials.user;
+			console.log(user.email);
+		})
+		.catch(error => alert(error.message));
+	}
 
 	return (
 		<View style={designs.container}>
@@ -19,27 +31,25 @@ export default function Registration({ navigation }) {
 		<View style={designs.inputView}>
 			<TextInput
 			style={designs.TextInput}
-			placeholder="Enter your Email"
+			placeholder="Email"
 			placeholderTextColor="#003f5c"
+			onChangeText={(email) => setEmail(email)}
 			/> 
 		</View> 
 		<View style={designs.inputView}>
 			<TextInput
 			style={designs.TextInput}
-			placeholder="Enter your Password"
+			placeholder="Password"
 			placeholderTextColor="#003f5c"
+			secureTextEntry={true}
+			onChangeText={(password) => setPassword(password)}
 			/> 
-		</View> 
-		<View style={designs.inputView}>
-			<TextInput
-			style={designs.TextInput}
-			placeholder="Confirm your Password"
-			placeholderTextColor="#003f5c"
-			/> 
-		</View> 
-		<TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Reports')}>
+		</View>
+		<TouchableOpacity style={designs.loginBtn} onPress={handleSignUp}>
 			<Text style={designs.loginText}>Create Account</Text> 
 		</TouchableOpacity> 
 		</View> 
 	);
 }
+
+//() => navigation.navigate('Reports')

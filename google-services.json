@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "926461189493",
+    "project_id": "good-day-app-5be12",
+    "storage_bucket": "good-day-app-5be12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926461189493:android:f6c81e6342603082af073c",
+        "android_client_info": {
+          "package_name": "com.GoodDayApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926461189493-o6p4fci9jn0v4hlfgl93bqs8gl6utd33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBncZOmd0RoU22vwDIpAzuHlXNrvBHjySE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926461189493-o6p4fci9jn0v4hlfgl93bqs8gl6utd33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
