@@ -18,7 +18,7 @@ function Form0({ navigation }) {
         <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Click START to begin your report!</PageTitle>
+                <PageTitle>Click START</PageTitle>
                 <Subtitle>This report will be completely anonymous. Your identity will not be traceable.</Subtitle>
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Condition')}>
