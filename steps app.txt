@@ -1,0 +1,27 @@
+
+
+
+1. Create invite
+-> invite code
+-> user id / email
+
+
+2. Create Report
+-> report id
+-> answers
+-> inviteId
+
+
+3. Show invited inviteIds
+
+4. Deleted invite
+
+5.Verify inviteId
+
+6. Show reports
+Fetch all  reports where inviteId is one of inviteId created by the user
+--- fetch all inviteIds by user
+--- ftech all reports of that invite inviteIds
+
+7. delete report
+
