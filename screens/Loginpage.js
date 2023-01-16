@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../components/firebase";
+import { useEffect } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -12,10 +13,23 @@ import {
 } from "react-native";
 
 import { designs } from "../components/styles";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LoginPage({ navigation }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+
+    useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged(user => {
+			if (user) {
+				navigation.replace("Reports")
+			}
+		})
+		return unsubscribe
+	}, [])
+
+
 	const handleSignUp = () => {
 		createUserWithEmailAndPassword(auth, email, password)
 		.then(userCredentials => {
@@ -29,20 +43,11 @@ export default function LoginPage({ navigation }) {
 		.then(userCredentials => {
 			const user = userCredentials.user;
 			console.log('Logged in with:', user.email);
+			navigation.navigate('Reports');
 		})
 		.catch(error => alert(error.message));
 	}
-	/*createUserWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
-			// Signed in 
-			const user = userCredential.user;
-			// ...
-		})
-		.catch((error) => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			// ..
-		});*/
+	
 
 	return (
 		<View style={designs.container}>
@@ -67,7 +72,7 @@ export default function LoginPage({ navigation }) {
 		<TouchableOpacity>
 			<Text style={designs.forgot_button}>Forgot Password?</Text> 
 		</TouchableOpacity> 
-		<TouchableOpacity style={designs.loginBtn} onPress={() => navigation.navigate('Reports')}>
+		<TouchableOpacity style={designs.loginBtn} onPress={(handleLogin)}>
 			<Text style={designs.loginText}>LOGIN</Text> 
 		</TouchableOpacity> 
 		</View> 
