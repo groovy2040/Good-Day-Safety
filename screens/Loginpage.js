@@ -21,11 +21,12 @@ export default function LoginPage({ navigation }) {
 
 
     useEffect(() => {
-		auth.onAuthStateChanged(user => {
+		const unsubscribe = auth.onAuthStateChanged(user => {
 			if (user) {
-				navigation.navigate("Reports")
+				navigation.replace("Reports")
 			}
 		})
+		return unsubscribe
 	}, [])
 
 
