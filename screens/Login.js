@@ -4,6 +4,7 @@ import { Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
+import { useEffect } from "react";
 
 import { 
     InnerContainer,
@@ -24,6 +25,23 @@ import {
     PageLogo - Change the source for your specified image.
 */
 function Login({ navigation }) {
+    const handleInviteID = () => {
+		signInWithEmailAndPassword(auth, email, password)
+		.then(userCredentials => {
+			const user = userCredentials.user;
+			console.log('Logged in with:', user.email);
+			navigation.navigate('Reports');
+		})
+		.catch(error => alert(error.message));
+	}
+
+    database()
+        .ref('/users/123')
+        .once('value')
+        .then(snapshot => {
+        console.log('User data: ', snapshot.val());
+    });
+
     return (
         <View style={designs.container}>
             <StatusBar style="dark" />
@@ -48,12 +66,6 @@ function Login({ navigation }) {
                 <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Form Start')}>
                     <Text style={designs.loginText}>Submit Invite ID</Text> 
                 </TouchableOpacity>
-                <Formik
-                    initialValues={{email: '', password: ''}}
-                    onSubmit={(values) => {
-                        console.log(values);
-                    }}
-                />
             </InnerContainer>
         </View>
         

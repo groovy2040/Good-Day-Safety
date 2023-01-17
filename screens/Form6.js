@@ -15,8 +15,6 @@ import {
 
 function Form6({ navigation }) {
 
-
-
     const [data, setData] = useState({})
     getData('form1answer').then(data1 => {
     getData('form2answer').then(data2 => {
@@ -27,6 +25,11 @@ function Form6({ navigation }) {
     })
    })
 })
+    /*const addReport = () => addDoc(collection(db, "report"), {
+        inviteid: setNumber(randomNumber),
+        userid: getData('email')
+    });*/
+
     return (
         <View style={{...designs.container}}>
             <StatusBar style="dark" />
@@ -39,7 +42,7 @@ function Form6({ navigation }) {
                 <Text style={designs.responseText}>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{data.condition}</Text>
                 <Text style={designs.responseText}>6. <Text style={designs.boldText}>Comments: </Text>{data.answer}</Text>
             </InnerContainer>
-            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Success')}>
+            <TouchableOpacity style={designs.Button} onPress={() => navigation.navigate('Success')}>
                     <Text style={designs.loginText}>Next</Text>
             </TouchableOpacity>
         </View>

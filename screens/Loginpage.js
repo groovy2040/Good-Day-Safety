@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../components/firebase";
 import { useEffect } from "react";
+import { storeData } from '../utils/storage';
 import {
 	StyleSheet,
 	Text,
@@ -48,6 +49,8 @@ export default function LoginPage({ navigation }) {
 		.catch(error => alert(error.message));
 	}
 	
+	const [data, setData] = useState({})
+	storeData('email', data);
 
 	return (
 		<View style={designs.container}>

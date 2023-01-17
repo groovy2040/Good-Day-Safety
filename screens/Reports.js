@@ -1,7 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TouchableOpacity } from 'react-native';
-import { auth } from "../components/firebase";
+import { auth, db } from "../components/firebase";
+import { collection, doc, setDoc, getDocs, docSnap } from "firebase/firestore"; 
 
 import { 
     InnerContainer,
@@ -17,7 +18,6 @@ import {
 */
 function Reports({ navigation }) {
 
-
     const handleSignOut = () => {
         auth.signOut()
         .then(() => {
@@ -25,6 +25,16 @@ function Reports({ navigation }) {
         })
         .catch(error => alert(error.message))
     }
+
+    //const inviteRef = collection(db, "invitation");
+    //const docRef = doc(db, "invitation", "Wknfek0en0IghXuyiMRt");
+    //const docSnap = getDocs(collection(db, "invitation"));
+
+    /*db.collection("users").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+        });
+    });*/
 
     return (
         <View style={designs.container}>

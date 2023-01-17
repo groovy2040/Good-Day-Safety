@@ -1,6 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TouchableOpacity } from 'react-native';
+import { collection, addDoc } from "firebase/firestore";
+import { auth, db } from "../components/firebase";
 
 import { 
     InnerContainer,
