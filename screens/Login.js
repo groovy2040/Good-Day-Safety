@@ -35,12 +35,12 @@ function Login({ navigation }) {
 		.catch(error => alert(error.message));
 	}
 
-    database()
+    /*database()
         .ref('/users/123')
         .once('value')
         .then(snapshot => {
         console.log('User data: ', snapshot.val());
-    });
+    });*/
 
     return (
         <View style={designs.container}>
