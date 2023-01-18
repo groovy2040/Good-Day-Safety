@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
 import { useEffect } from "react";
+import { doc, getCountFromServer, query, collection, where } from "firebase/firestore";
+import { db } from "../components/firebase";
+
 
 import { 
     InnerContainer,
@@ -16,6 +19,7 @@ import {
     TextBoxStyle,
     designs
 } from '../components/styles';
+import { storeData } from '../utils/storage';
 
 /*
     This function is the home page for the app.
@@ -42,6 +46,7 @@ function Login({ navigation }) {
         console.log('User data: ', snapshot.val());
     });*/
 
+    const [inviteid , setInviteid] = useState(); 
     return (
         <View style={designs.container}>
             <StatusBar style="dark" />
@@ -61,9 +66,28 @@ function Login({ navigation }) {
                     placeholder="Enter your Invite ID here"
                     keyboardType="numeric"
                     maxLength={6}
+                    onChangeText={setInviteid}
+                    value={inviteid}
                     /> 
                 </View>
-                <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Form Start')}>
+                <TouchableOpacity style={designs.loginBtn} onPress={async () =>{
+
+                // validate invite id
+
+                const invitationsRef = collection(db, "invitation");
+                const q = query(invitationsRef, where("inviteid", "==", Number(inviteid))); 
+                const docs = await getCountFromServer(q);
+
+                console.log(inviteid, typeof inviteid, docs.data())
+                if (docs.data().count) {
+                    storeData('inviteid', inviteid)
+                    navigation.navigate('Form Start')
+                } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+                }
+
+                }}>
                     <Text style={designs.loginText}>Submit Invite ID</Text> 
                 </TouchableOpacity>
             </InnerContainer>

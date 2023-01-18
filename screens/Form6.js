@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TouchableOpacity } from 'react-native';
 import { getData } from '../utils/storage';
+import { collection, doc, setDoc, getDocs, docSnap, addDoc, connectFirestoreEmulator } from "firebase/firestore"; 
+import { auth, db } from "../components/firebase";
 
 import { 
     InnerContainer,
@@ -16,15 +18,21 @@ import {
 function Form6({ navigation }) {
 
     const [data, setData] = useState({})
-    getData('form1answer').then(data1 => {
-    getData('form2answer').then(data2 => {
-        getData('form3answer').then(data3 => {
-        getData('form5answer').then(data5 => {
-            setData({...data1, ...data2, ...data3,  ...data5})
-        })
-    })
-   })
-})
+
+    useEffect(() => {
+
+        const fn = async () => {
+            const data1 = await getData('form1answer');
+            const data2 = await getData('form2answer');
+            const data3 = await getData('form3answer');
+            const data5 = await getData('form5answer');            
+            const data = {...data1, ...data2, ...data3,  ...data5} 
+            setData(data)
+        
+        }
+        fn()
+    }, [])
+ 
     /*const addReport = () => addDoc(collection(db, "report"), {
         inviteid: setNumber(randomNumber),
         userid: getData('email')
@@ -42,7 +50,14 @@ function Form6({ navigation }) {
                 <Text style={designs.responseText}>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{data.condition}</Text>
                 <Text style={designs.responseText}>6. <Text style={designs.boldText}>Comments: </Text>{data.answer}</Text>
             </InnerContainer>
-            <TouchableOpacity style={designs.Button} onPress={() => navigation.navigate('Success')}>
+            <TouchableOpacity style={designs.Button} onPress={async () => {
+                const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
+                const inviteid  = await getData('inviteid')
+                console.log(inviteid)  
+
+            addDoc(collection(db, "report"), { inviteid: Number(inviteid), reportid: randomNumber, ...data});
+            navigation.navigate('Success')
+            }}>
                     <Text style={designs.loginText}>Next</Text>
             </TouchableOpacity>
         </View>
