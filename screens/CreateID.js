@@ -10,6 +10,7 @@ const CreateID = () => {
     const getRandomNumber = async () => {
         const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
         setNumber(randomNumber);
+        
         var user = await getData('email');
         console.log(user);
         addDoc(collection(db, "invitation"), {

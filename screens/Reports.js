@@ -26,15 +26,8 @@ function Reports({ navigation }) {
         .catch(error => alert(error.message))
     }
 
-    //const inviteRef = collection(db, "invitation");
-    //const docRef = doc(db, "invitation", "Wknfek0en0IghXuyiMRt");
-    //const docSnap = getDocs(collection(db, "invitation"));
+    
 
-    /*db.collection("users").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
-        });
-    });*/
 
     return (
         <View style={designs.container}>
