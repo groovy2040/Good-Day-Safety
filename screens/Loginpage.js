@@ -42,15 +42,13 @@ export default function LoginPage({ navigation }) {
 	const handleLogin = () => {
 		signInWithEmailAndPassword(auth, email, password)
 		.then(userCredentials => {
+			storeData('email', email);
 			const user = userCredentials.user;
 			console.log('Logged in with:', user.email);
 			navigation.navigate('Reports');
 		})
 		.catch(error => alert(error.message));
 	}
-	
-	const [data, setData] = useState({})
-	storeData('email', data);
 
 	return (
 		<View style={designs.container}>

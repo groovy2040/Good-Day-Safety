@@ -7,23 +7,16 @@ import { getData, storeData } from '../utils/storage';
 const CreateID = () => {
     const [number, setNumber] = React.useState(null);
 
-    const getRandomNumber = () => {
+    const getRandomNumber = async () => {
         const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
         setNumber(randomNumber);
+        var user = await getData('email');
+        console.log(user);
+        addDoc(collection(db, "invitation"), {
+            inviteid: randomNumber,
+            userid: user
+        });
     }
-
-    const [data, setData] = useState({})
-
-    storeData('randomNumberStore', data)
-
-    /*var inviteID = randomNumber;
-    var email = getData('email');
-    console.log(data.Loginpage);
-
-    const setRandomNumber = () => addDoc(collection(db, "invitation"), {
-        inviteid: setNumber(randomNumber),
-        userid: getData('email')
-    });*/
 
     return (
         <View style={styles.container}>
