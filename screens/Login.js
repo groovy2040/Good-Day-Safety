@@ -39,19 +39,21 @@ function Login({ navigation }) {
 		.catch(error => alert(error.message));
 	}
 
-    /*database()
-        .ref('/users/123')
-        .once('value')
-        .then(snapshot => {
-        console.log('User data: ', snapshot.val());
-    });*/
 
     const [inviteid , setInviteid] = useState(); 
+    
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            setInviteid("");
+        });
+        return unsubscribe;
+     }, [navigation]);
+
     return (
         <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageLogo resizeMode="cover" source={require('./../assets/favicon.png')} />
+                <PageLogo resizeMode="cover" source={require('./../assets/logo.png')} />
                 <PageTitle>Good Day App</PageTitle>
                 <TouchableOpacity style={designs.loginBtn} onPress={() =>navigation.navigate('Create Account')}>
                     <Text style={designs.loginText}>Create Account</Text> 

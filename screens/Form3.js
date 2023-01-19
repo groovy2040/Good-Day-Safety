@@ -1,9 +1,10 @@
 import RadioForm from 'react-native-simple-radio-button';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { storeData } from '../utils/storage';
+import { storeData, getData } from '../utils/storage';
+import isEmpty from '../utils/isEmpty';
 
 import { 
     InnerContainer,
@@ -38,19 +39,45 @@ export default function Form3({navigation}) {
   
   const [data, setData] = useState({})
 
-  storeData('form3answer', data)
+  const  [dataReady, setDataReady] = useState(false);
+
+  useEffect(() => {
+    const fn = async () => {
+          setDataReady(false)
+        
+        const data = await getData('form3answer');
+        setData(data || {})
+                    setDataReady(true)
+
+    }
+    
+    const unsubscribe = navigation.addListener('focus', () => {
+        fn();
+    });
+    return unsubscribe;
+
+}, [navigation]);
+
+
+    useEffect(() => {
+        if(!isEmpty(data)) {
+            storeData('form3answer', data)
+        }
+    }, [data])
+
+    const initialValue = options.find(o => o.label === data.condition)?.value;
     
   return (
       <View style={designs.container}>
         <PageTitle>Unsafe Conditions:</PageTitle>
-        <RadioForm
+         {dataReady && <RadioForm
           buttonSize={15}
           radio_props={options}
-          initial={null} //initial value of this group
+          initial={typeof initialValue !== 'undefined' ? initialValue : null}
           onPress={(value) => {
             setData({condition: options.find(o => o.value === value)?.label})
           }} //if the user changes options, set the new value
-        />
+         /> }   
         <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Photo')}>
                       <Text style={designs.loginText}>Next</Text> 
               </TouchableOpacity>       

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import { storeData } from '../utils/storage';
+import { storeData, getData } from '../utils/storage';
+import isEmpty from '../utils/isEmpty';
 
 import { 
     InnerContainer,
@@ -13,10 +15,28 @@ import {
     designs
 } from '../components/styles';
 
-function Form5({ navigation }) {
-    const [answer, setAnswer] = React.useState();
 
-    storeData('form5answer', {answer})
+function Form5({ navigation }) {
+    const [data, setData] = useState({})
+    useEffect(() => {
+        const fn = async () => {
+            const data = await getData('form5answer');
+            setData(data || {})
+        }
+        
+        const unsubscribe = navigation.addListener('focus', () => {
+            fn();
+        });
+        return unsubscribe;
+
+    }, [navigation]);
+
+
+    useEffect(() => {
+        if(!isEmpty(data)) {
+            storeData('form5answer', data)
+        }
+    }, [data])
 
     return (
         <ScrollView>
@@ -27,8 +47,8 @@ function Form5({ navigation }) {
                 <View style={designs.inputViewLarge}>
                     <TextInput
                     style={designs.TextInput}
-                    onChangeText={setAnswer}
-                    value={answer}
+                    onChangeText={(answer) => { setData({answer})}}
+                    value={data?.answer}
                     placeholder="Add Comments Here"
                     multiline
                     maxLength={250}
