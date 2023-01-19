@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { storeData } from '../utils/storage';
 
 import { 
     InnerContainer,
@@ -23,10 +24,12 @@ function Form4({ navigation }) {
             mediaTypes : ImagePicker.MediaTypeOptions.Images,
             allowsEditing: false,
             quality: 1,
+            base64: true
         });
     
         if (!result.canceled) {
             setImage(result.assets[0].uri)
+            storeData('image', {image: result.assets[0].base64})
         }
     };
 

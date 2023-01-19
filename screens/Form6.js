@@ -25,8 +25,9 @@ function Form6({ navigation }) {
             const data1 = await getData('form1answer');
             const data2 = await getData('form2answer');
             const data3 = await getData('form3answer');
+            const image = await getData('image');
             const data5 = await getData('form5answer');            
-            const data = {...data1, ...data2, ...data3,  ...data5} 
+            const data = {...data1, ...data2, ...data3,  ...data5, ...image} 
             setData(data)
         
         }
@@ -52,11 +53,19 @@ function Form6({ navigation }) {
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={async () => {
                 const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
-                const inviteid  = await getData('inviteid')
-                console.log(inviteid)  
+                //let c = {...data}
+                //c.image=''
+                alert(JSON.stringify(data))
+                if(Object.values(data).some(value=>!value.length) || Object.values(data).length < 7){
+                    alert('Please fill out')
+                }else{
+                    const inviteid  = await getData('inviteid')
+                    console.log(inviteid)  
 
-            addDoc(collection(db, "report"), { inviteid: Number(inviteid), reportid: randomNumber, ...data});
-            navigation.navigate('Success')
+                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), reportid: randomNumber, ...data});
+                    navigation.navigate('Success')
+                }
+                
             }}>
                     <Text style={designs.loginText}>Next</Text>
             </TouchableOpacity>
