@@ -18,3 +18,12 @@ export const getData = async (key) => {
     // error reading value
   }
 }
+
+export const storeReport = async (field, value) => {
+  try {
+    const existingReport = await getData('report') || {};
+    await storeData('report', {...existingReport, [field]: value })
+  } catch (error) {
+    
+  }
+}

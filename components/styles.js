@@ -154,6 +154,17 @@ export const designs = StyleSheet.create({
     backgroundColor: "#1e90ff",
     marginBottom: "5%",
   },
+  Signout:{
+    width: "50%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#1e90ff",
+    position:'absolute',
+    bottom: 25,
+  },
   Comment: {
     width: "50%",
     borderRadius: 25,
