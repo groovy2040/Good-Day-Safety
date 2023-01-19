@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as ImagePicker from 'expo-image-picker';
@@ -42,8 +42,24 @@ function App() {
         <Stack.Screen name="Create Account" component={Registration} />
         <Stack.Screen name="Create an Account" component={CreateAccount} />
         <Stack.Screen name="Account Settings" component={AccountSettings} />
-        <Stack.Screen name="Reports" component={Reports} />
-        <Stack.Screen name="Invite ID Management" component={CreateID} />
+        <Stack.Screen name="Reports" component={Reports} 
+          options={({navigation})=>({
+            headerRight:  () => 
+              <Button
+                onPress={() =>navigation.navigate('Account Settings')}
+                title="Settings"
+              />
+          })}
+        />
+        <Stack.Screen name="Invite ID Management" component={CreateID} 
+          options={({navigation})=>({
+            headerRight:  () => 
+              <Button
+                onPress={() =>navigation.navigate('Invites')}
+                title="Invites"
+              />
+          })}
+        />
         <Stack.Screen name="Subscription Management" component={Subscription} />
         <Stack.Screen name="Designated Admins" component={DesignatedAdmins} />
         <Stack.Screen name="Account Details" component={AccountDetails} />

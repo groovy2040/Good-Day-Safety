@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, Button, View, TouchableOpacity, ScrollView, Pressable } from 'react-native';
+import { Text, Button, View, TouchableOpacity, ScrollView, Pressable, Image } from 'react-native';
 
 import {
     InnerContainer,
@@ -15,6 +15,9 @@ import {
 */
 function ProjectCard({ report }) {
     const [show, setShow] = useState(false)
+
+    var base64Image = 'data:image/png;base64,' + report.image;
+    
     return (
         <View style={{flex:1}}>
             <Pressable
@@ -31,6 +34,7 @@ function ProjectCard({ report }) {
                 <Text>Section: {report.section}</Text>
                 <Text>Condition: {report.condition}</Text>
                 <Text>answer: {report.answer}</Text>
+                <Image style={{width: '50%', height: '50%', borderWidth: 1}} source={{uri: base64Image}}/>
             </View> 
             : null}
         </View>

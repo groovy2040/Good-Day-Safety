@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, Button, View, TextInput, TouchableOpacity, SafeAreaView, Image, Alert, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
 import { useEffect } from "react";
 import { doc, getCountFromServer, query, collection, where } from "firebase/firestore";
 import { db } from "../components/firebase";
-
+import Swipelist from 'react-native-swipeable-list-view';
 
 import { 
     InnerContainer,
@@ -38,6 +38,18 @@ function Login({ navigation }) {
 		})
 		.catch(error => alert(error.message));
 	}
+
+    const data = [
+        {
+          name: 'Invite 1',
+        },
+        {
+          name: 'Invite 2',
+        },
+        {
+          name: 'Invite 3',
+        },
+    ];
 
     /*database()
         .ref('/users/123')
@@ -97,16 +109,40 @@ function Login({ navigation }) {
     );
 }
 
-const Stack = createNativeStackNavigator();
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+const styles = StyleSheet.create({
+    container: {
+      height: 60,
+      marginVertical: 10,
+      backgroundColor: '#ffffff',
+      justifyContent: 'center',
+      paddingLeft: 10,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
+  
+    rightAction: {
+      width: '100%',
+      marginVertical: 10,
+      alignItems: 'center',
+      flex: 1,
+      justifyContent: 'center',
+      height: 60,
+      backgroundColor: '#ffffff',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
+  });
 
 export default Login;
