@@ -7,7 +7,7 @@ import { getData, storeData } from '../utils/storage';
 const CreateID = () => {
     const [number, setNumber] = React.useState(null);
 
-    const getRandomNumber = async () => {
+    const getRandomNumber = async() => {
         const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
         setNumber(randomNumber);
         var user = await getData('email');
