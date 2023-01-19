@@ -21,19 +21,19 @@ function ProjectCard({ report }) {
         <View style={{flex:1}}>
             <Pressable
                 onPress={() => setShow(!show)}
-                style={{ backgroundColor:'wheat', padding:20}}
+                style={{ backgroundColor:'wheat', padding:20, paddingHorizontal: 100, marginVertical: 10}}
             >
                 <Text>{report.project || 'no project name'}</Text>
             </Pressable>
             {show ? 
-            <View>
+            <View style={{height:200}}>
                 <Text>Choice: {report.choice}</Text>
                 <Text>Project Name: {report.project}</Text>
                 <Text>Floor: {report.floor}</Text>
                 <Text>Section: {report.section}</Text>
                 <Text>Condition: {report.condition}</Text>
                 <Text>answer: {report.answer}</Text>
-                <Image style={{width: '50%', height: '50%', borderWidth: 1}} source={{uri: base64Image}}/>
+                <Image style={{width: '70%', height: '40%', borderWidth: 1}} source={{uri: base64Image}}/>
             </View> 
             : null}
         </View>
