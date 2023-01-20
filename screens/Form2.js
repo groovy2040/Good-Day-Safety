@@ -54,7 +54,7 @@ function Form2({ navigation }) {
                     maxLength={50}
                     /> 
                 </View>
-                <Subtitle>Floor Number:</Subtitle>
+                <Subtitle>Floor Number/Location:</Subtitle>
                 <View style={{...designs.inputView, marginBottom: 0, marginTop: 10}}>
                     <TextInput
                     style={designs.TextInput}
@@ -66,7 +66,7 @@ function Form2({ navigation }) {
                     maxLength={50}
                     /> 
                 </View>
-                <Subtitle>Section of the Floor (North, East, West, South):</Subtitle>
+                <Subtitle>Section Floor/Area (North, East, West, South):</Subtitle>
                 <View style={{...designs.inputView, marginBottom: 0, marginTop: 10}}>
                     <TextInput
                     style={designs.TextInput}
