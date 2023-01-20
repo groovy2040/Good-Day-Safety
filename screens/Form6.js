@@ -57,10 +57,10 @@ function Form6({ navigation }) {
                 const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
                 
                 if(Object.values(data).some(value=>!value.length) || Object.values(data).length < 7){
-                    alert('Please fill out')
+                    alert('Please fill out all the entries')
                 }else{
                     const inviteid  = await getData('inviteid')
-                    console.log(inviteid)  
+                    console.log(inviteid)
 
                     addDoc(collection(db, "report"), { inviteid: Number(inviteid), reportid: randomNumber, ...data});
                     await resetFormData()
