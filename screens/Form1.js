@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RadioForm from 'react-native-simple-radio-button';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TouchableOpacity } from 'react-native';
 import Checkbox from 'expo-checkbox';
-import { storeData } from '../utils/storage';
+import { storeData, getData } from '../utils/storage';
+import isEmpty from '../utils/isEmpty';
 
 import { 
     InnerContainer,
@@ -26,24 +27,47 @@ function Form1({ navigation }) {
 
   ];
 
+
     const [data, setData] = useState({})
+    const  [dataReady, setDataReady] = useState(false);
+    
+    useEffect(() => {
+        const fn = async () => {
+            setDataReady(false)
+            const data = await getData('form1answer');
+            setData(data || {})
+            setDataReady(true)
+        }
+        
+        const unsubscribe = navigation.addListener('focus', () => {
+            fn();
+        });
+        return unsubscribe;
 
-    storeData('form1answer', data)
+    }, [navigation]);
 
+    useEffect(() => {
+        if(!isEmpty(data)) {
+            storeData('form1answer', data)
+        }
+    }, [data])
+
+
+const initialValue = options.find(o => o.label === data.choice)?.value ;
     return (
         <View style={[designs.container]}>
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Can you make this a SAFE condition?</PageTitle>
                 <Subtitle>If possible, please ensure that this condition is not accessible by others and proceed with your report.{"\n"}{"\n"}</Subtitle>
-                <RadioForm
+             {dataReady && <RadioForm
                 radioStyle={{marginTop: 0, marginBottom: 50}}
                 radio_props={options}
-                initial={null} //initial value of this group
+                initial={typeof initialValue !== 'undefined' ? initialValue : null} //initial value of this group
                 onPress={(value) => {
                 setData({choice: options.find(o => o.value === value)?.label})
             }} //if the user changes options, set the new value
-            />
+            /> }   
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Location')}>
                     <Text style={designs.loginText}>Next</Text> 

@@ -4,6 +4,8 @@ import { Text, Button, View, TouchableOpacity } from 'react-native';
 import { getData } from '../utils/storage';
 import { collection, doc, setDoc, getDocs, docSnap, addDoc, connectFirestoreEmulator } from "firebase/firestore"; 
 import { auth, db } from "../components/firebase";
+import resetFormData from '../utils/resetFormData';
+
 
 import { 
     InnerContainer,
@@ -53,9 +55,7 @@ function Form6({ navigation }) {
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={async () => {
                 const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
-                //let c = {...data}
-                //c.image=''
-                alert(JSON.stringify(data))
+                
                 if(Object.values(data).some(value=>!value.length) || Object.values(data).length < 7){
                     alert('Please fill out')
                 }else{
@@ -63,6 +63,7 @@ function Form6({ navigation }) {
                     console.log(inviteid)  
 
                     addDoc(collection(db, "report"), { inviteid: Number(inviteid), reportid: randomNumber, ...data});
+                    await resetFormData()
                     navigation.navigate('Success')
                 }
                 

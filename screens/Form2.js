@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { storeData } from '../utils/storage';
+import { storeData, getData } from '../utils/storage';
+import isEmpty from '../utils/isEmpty';
 
 import { 
     InnerContainer,
@@ -18,8 +19,24 @@ import {
 function Form2({ navigation }) {
     const [data, setData] = useState({})
 
-    storeData('form2answer', data)
-    
+    useEffect(() => {
+        const fn = async () => {
+            const data = await getData('form2answer');
+            setData(data || {})
+        }
+        
+        const unsubscribe = navigation.addListener('focus', () => {
+            fn();
+        });
+        return unsubscribe;
+
+    }, [navigation]);
+
+    useEffect(() => {
+        if(!isEmpty(data)) {
+            storeData('form2answer', data)
+        }
+    }, [data])
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
@@ -37,7 +54,7 @@ function Form2({ navigation }) {
                     maxLength={50}
                     /> 
                 </View>
-                <Subtitle>Floor Number:</Subtitle>
+                <Subtitle>Floor Number/Location:</Subtitle>
                 <View style={{...designs.inputView, marginBottom: 0, marginTop: 10}}>
                     <TextInput
                     style={designs.TextInput}
@@ -49,7 +66,7 @@ function Form2({ navigation }) {
                     maxLength={50}
                     /> 
                 </View>
-                <Subtitle>Section of the Floor (North, East, West, South):</Subtitle>
+                <Subtitle>Section Floor/Area (North, East, West, South):</Subtitle>
                 <View style={{...designs.inputView, marginBottom: 0, marginTop: 10}}>
                     <TextInput
                     style={designs.TextInput}
