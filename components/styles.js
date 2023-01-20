@@ -109,6 +109,11 @@ export const designs = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  scrollContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignContent: "center",
+  },
   inputView: {
     backgroundColor: "#e7e7e7",
     borderRadius: 30,
@@ -175,6 +180,17 @@ export const designs = StyleSheet.create({
     backgroundColor: "#1e90ff",
     marginBottom: "5%",
   },
+  submit: {
+    width: "50%",
+    height: 50,
+    marginTop: 20,
+    backgroundColor: "#1e90ff",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#1e90ff",
+  },
     Three: {
       width: "50%",
       borderRadius: 50,
@@ -190,6 +206,10 @@ export const designs = StyleSheet.create({
     },
     responseText: {
       fontSize: 20,
+      textAlign: 'left'
+    },
+    reportText: {
+      fontSize: 15,
       textAlign: 'left'
     },
     responseContainer: {

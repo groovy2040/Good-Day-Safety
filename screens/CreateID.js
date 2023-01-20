@@ -28,11 +28,12 @@ const InvitationCard = ({ invite, inviteid, fetch, setFetch}) => {
                 backgroundColor: '#ccc',
                 alignSelf: 'center',
                 padding: 10,
-                marginBottom: 10
+                marginBottom: 5,
+                marginTop: 5
             }}
             onPress={showAlert}>
         <Text>{inviteid}</Text>
-        <Text>{"x"}</Text>
+        <Text style={styles.invitetext}>{"x"}</Text>
             </TouchableOpacity>
         </View>
     )
@@ -80,7 +81,7 @@ const CreateID = () => {
                     onPress={() => {getRandomNumber()}}
                 />
             </View>
-            <ScrollView contentContainerStyle={{ paddingVertical: 10 }}>
+            <ScrollView contentContainerStyle={{ paddingVertical: 10}}>
                     {invitationids.map((invite) => {
                         const inviteid = invite.data().inviteid
                         return  <InvitationCard key={inviteid} invite={invite} inviteid={inviteid} 
@@ -95,15 +96,15 @@ const CreateID = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flexShrink: 1, 
-        height: '80%',
+        flex: 0.9, 
+        height: '70%',
         justifyContent: 'center',
         alignItems: 'center',
     },
     innerContainer: {
         marginTop: 20,
-        marginBottom: 40,
-        padding:80,
+        marginBottom: 50,
+        padding:40,
         borderRadius:30,
         backgroundColor:'white',
     },
@@ -114,6 +115,11 @@ const styles = StyleSheet.create({
     text: {
         fontSize:25,
         color:'black',
+        fontWeight:'700',
+    },
+    invitetext: {
+        fontSize:15,
+        color:'red',
         fontWeight:'700',
     },
 });

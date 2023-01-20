@@ -39,8 +39,7 @@ function Form4({ navigation }) {
             <InnerContainer>
                 <PageTitle>Attach a single photo of the unsafe condition</PageTitle>
                 <Subtitle>This step is mandatory.</Subtitle>
-                <Text>{"\n"}</Text>
-                {image && <Image source={{ uri : image}} style={{ width:"90%", height: "50%"}}/>}
+                {image && <Image source={{ uri : image}} style={{ width:"60%", height: "50%"}}/>}
                 <TouchableOpacity style={designs.Button} onPress={pickImage}>
                     <Text style={designs.loginText}>Choose a Photo</Text> 
                 </TouchableOpacity>

@@ -5,7 +5,7 @@ import { Text, Button, View, ScrollView, TextInput, TouchableOpacity } from 'rea
 import { storeData, getData } from '../utils/storage';
 import isEmpty from '../utils/isEmpty';
 
-import { 
+import {
     InnerContainer,
     StyledContainer,
     PageTitle,
@@ -23,7 +23,7 @@ function Form5({ navigation }) {
             const data = await getData('form5answer');
             setData(data || {})
         }
-        
+
         const unsubscribe = navigation.addListener('focus', () => {
             fn();
         });
@@ -33,32 +33,32 @@ function Form5({ navigation }) {
 
 
     useEffect(() => {
-        if(!isEmpty(data)) {
+        if (!isEmpty(data)) {
             storeData('form5answer', data)
         }
     }, [data])
 
     return (
-        <ScrollView>
-                <View style={designs.container}>
-            <StatusBar style="dark" />
-            <InnerContainer>
-                <PageTitle>Are there any other comments you would like to make?{"\n"}{"\n"}</PageTitle>
-                <View style={designs.inputViewLarge}>
-                    <TextInput
-                    style={designs.TextInput}
-                    onChangeText={(answer) => { setData({answer})}}
-                    value={data?.answer}
-                    placeholder="Add Comments Here"
-                    multiline
-                    maxLength={250}
-                    /> 
-                </View>
-            </InnerContainer>
-            <TouchableOpacity style={designs.Comment} onPress={() =>navigation.navigate('Confirm')}>
-                    <Text style={designs.loginText}>Next</Text> 
-            </TouchableOpacity>
-        </View>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <View style={designs.container}>
+                <StatusBar style="dark" />
+                <InnerContainer>
+                    <PageTitle>Are there any other comments you would like to make?{"\n"}{"\n"}</PageTitle>
+                    <View style={designs.inputViewLarge}>
+                        <TextInput
+                            style={designs.TextInput}
+                            onChangeText={(answer) => setData({ ...data, answer })}
+                            value={data?.answer}
+                            placeholder="Add Comments Here"
+                            multiline
+                            maxLength={250}
+                        />
+                    </View>
+                </InnerContainer>
+                <TouchableOpacity style={designs.Comment} onPress={() => navigation.navigate('Confirm')}>
+                    <Text style={designs.loginText}>Next</Text>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
     )
 }
