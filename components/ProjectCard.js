@@ -20,7 +20,7 @@ function ProjectCard({ report }) {
         <View style={{flex:1}}>
             <Pressable
                 onPress={() => setShow(!show)}
-                style={{ backgroundColor:'wheat', padding:20, paddingHorizontal: 100, marginVertical: 10}}
+                style={{ backgroundColor:'#f0d690', padding:20, paddingHorizontal: 100, marginVertical: 10}}
             >
                 <Text>{report.project || 'no project name'}</Text>
             </Pressable>
