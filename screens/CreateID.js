@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { auth, db } from "../components/firebase";
 import { collection, doc, deleteDoc, setDoc, getDocs, docSnap, addDoc, connectFirestoreEmulator, query, orderBy } from "firebase/firestore"; 
 import { getData, storeData } from '../utils/storage';
+import { designs } from '../components/styles';
 
 const InvitationCard = ({ invite, inviteid, fetch, setFetch}) => {
     const showAlert = () =>
@@ -51,7 +52,7 @@ const CreateID = () => {
             inviteid: randomNumber,
             userid: user,
             createdat: Date.now()
-        });      
+        });
 
         setFetch(!fetch)
     }

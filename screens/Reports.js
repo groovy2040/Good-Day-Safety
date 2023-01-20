@@ -54,13 +54,8 @@ function Reports({ navigation }) {
         <View style={designs.container}>
             <StatusBar style="dark" />
                 <PageTitle>Reports</PageTitle>
-                <TouchableOpacity style={designs.Button} onPress={() => navigation.navigate('Account Settings')}>
-                    <Text style={designs.loginText}>Settings</Text>
-                </TouchableOpacity>
-                <ScrollView contentContainerStyle={{ paddingVertical: 80 }}>
-                    <View>
+                <ScrollView contentContainerStyle={{ paddingVertical: 10 }}>
                         {reports.map((report) => <ProjectCard key={report.projectid} report={report} />)}
-                    </View>
                 </ScrollView>
                 <TouchableOpacity style={designs.Signout} onPress={(handleSignOut)}>
                     <Text style={designs.loginText}>Sign out</Text>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, Button, View, TouchableOpacity, ScrollView, Pressable } from 'react-native';
+import { Text, Button, View, TouchableOpacity, ScrollView, Pressable, Image } from 'react-native';
 
 import {
     InnerContainer,
