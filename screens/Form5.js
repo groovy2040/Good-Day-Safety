@@ -47,8 +47,8 @@ function Form5({ navigation }) {
                     <View style={designs.inputViewLarge}>
                         <TextInput
                             style={designs.TextInput}
-                            onChangeText={(answer) => setData({ ...data, answer })}
-                            value={data?.answer}
+                            onChangeText={(comment) => setData({ ...data, comment })}
+                            value={data?.comment}
                             placeholder="Add Comments Here"
                             multiline
                             maxLength={250}

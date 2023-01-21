@@ -4,6 +4,7 @@ import { Text, Button, View, TouchableOpacity, ScrollView, StyleSheet, Dimension
 import { auth, db } from "../components/firebase";
 import { collection, doc, setDoc, getDocs, docSnap, query } from "firebase/firestore";
 import ProjectCard from '../components/ProjectCard';
+import SwipeList from '../components/SwipeList';
 
 import {
     InnerContainer,
@@ -13,7 +14,7 @@ import {
     StyledFormArea,
     designs
 } from '../components/styles';
-import SwipeList from '../components/SwipeList';
+
 
 let width = Dimensions.get('window').width
 /*
@@ -49,9 +50,7 @@ function Reports({ navigation }) {
             <StatusBar style="dark" />
             <InnerContainer>
                 <PageTitle>Reports</PageTitle>
-                <TouchableOpacity style={designs.Button} onPress={() => navigation.navigate('Account Settings')}>
-                    <Text style={designs.loginText}>Settings</Text>
-                </TouchableOpacity>
+                
                 <View style={styles.container}>
                     {/*<ScrollView contentContainerStyle={{ paddingVertical: 10 }}>
                             {reports.map((report) => <ProjectCard key={report.projectid} report={report} />)}
@@ -68,10 +67,10 @@ function Reports({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 0.8,
+        flex: 0.75,
         justifyContent: 'center',
         alignItems: 'center',
-        width: width * 0.8
+        width: width * 1
     }
 })
 

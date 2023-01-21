@@ -159,6 +159,14 @@ export const designs = StyleSheet.create({
     backgroundColor: "#1e90ff",
     marginBottom: "5%",
   },
+  headerButton: {
+    borderRadius: 25,
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#1e90ff",
+    paddingHorizontal: 20
+  },
   Signout:{
     width: "50%",
     borderRadius: 25,

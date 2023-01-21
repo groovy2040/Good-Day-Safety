@@ -103,9 +103,9 @@ const styles = StyleSheet.create({
     },
     innerContainer: {
         marginTop: 20,
-        marginBottom: 50,
-        padding:40,
-        borderRadius:30,
+        marginBottom: 20,
+        padding: 40,
+        borderRadius: 30,
         backgroundColor:'white',
     },
     numberContainer: {

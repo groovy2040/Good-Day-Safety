@@ -32,7 +32,7 @@ function ProjectCard({ report }) {
                 <Text style={designs.reportText}>3. <Text style={designs.boldText}>Project Floor: </Text>{report.floor}</Text>
                 <Text style={designs.reportText}>4. <Text style={designs.boldText}>Section Area: </Text>{report.section}</Text>
                 <Text style={designs.reportText}>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{report.condition}</Text>
-                <Text style={designs.reportText}>6. <Text style={designs.boldText}>Comments: </Text>{report.answer}</Text>
+                <Text style={designs.reportText}>6. <Text style={designs.boldText}>Comments: </Text>{report.comment}</Text>
                 <Image style={{ height: 150, borderWidth: 1}} source={{uri: base64Image}}/>
             </View>
             : null}

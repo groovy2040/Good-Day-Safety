@@ -1,9 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const memory = {}; //we use module variable as fast cache
+
 export const storeData = async (key, value) => {
   try {
     const jsonValue = JSON.stringify(value)
+    memory[key] = value
     await AsyncStorage.setItem(key, jsonValue)
+
   } catch (e) {
     // saving error
   }
@@ -12,8 +16,13 @@ export const storeData = async (key, value) => {
 
 export const getData = async (key) => {
   try {
-    const jsonValue = await AsyncStorage.getItem(key)
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
+    let jsonValue = memory[key]
+    //alert(JSON.stringify(memory))
+    if(jsonValue === undefined){
+      jsonValue = await AsyncStorage.getItem(key)
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    }
+    return jsonValue
   } catch(e) {
     // error reading value
   }

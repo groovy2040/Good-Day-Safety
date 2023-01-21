@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, Button, View, TextInput, TouchableOpacity, ScrollView, Alert} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
 import { useEffect } from "react";
 import { doc, getCountFromServer, query, collection, where } from "firebase/firestore";
 import { db } from "../components/firebase";
+import { storeData } from '../utils/storage';
 
 
 import {
@@ -19,7 +20,7 @@ import {
     TextBoxStyle,
     designs
 } from '../components/styles';
-import { storeData } from '../utils/storage';
+
 
 /*
     This function is the home page for the app.
@@ -86,8 +87,7 @@ function Login({ navigation }) {
                             storeData('inviteid', inviteid)
                             navigation.navigate('Form Start')
                         } else {
-                            // doc.data() will be undefined in this case
-                            console.log("No such document!");
+                            Alert.alert("Invalid ID", "Please Enter a Valid Invitation Code to Proceed!");
                         }
 
                     }}>

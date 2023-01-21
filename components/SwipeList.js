@@ -26,18 +26,18 @@ export default function SwipeList({ list }) {
         }
     };
 
-    const deleteRow = (rowMap, rowKey) => {
+    const deleteRow = (rowMap, projectid, rowKey) => {
         Alert.alert('Confirm deletion', 'Are you sure you want to delete?', [
             {
                 text: 'Cancel',
-                onPress: () => { },
+                onPress: () => {},
                 style: 'cancel',
             },
             {
                 text: 'OK', onPress: () => {
                     closeRow(rowMap, rowKey);
                     const newData = [...listData];
-                    const prevIndex = listData.findIndex(item => item.projectid === rowKey);
+                    const prevIndex = listData.findIndex(item => item.projectid === projectid);
                     deleteDoc(listData[prevIndex].ref)
                     newData.splice(prevIndex, 1);
                     setListData(newData);
@@ -51,15 +51,15 @@ export default function SwipeList({ list }) {
         console.log('This row opened', rowKey);
     };
 
-    function renderItem(data) {
+    function renderItem(data,rowMap) {
         const report = data.item;
         var base64Image = 'data:image/png;base64,' + report.image;
         return (
             <>
                 <Pressable
                     onPress={() => {
-                        //alert(JSON.stringify(report.projectid))
                         show[report.reportid] = !show[report.reportid]
+                        rowMap[data.index].closeRow()
                         setShow({ ...show })
 
                     }}
@@ -70,14 +70,14 @@ export default function SwipeList({ list }) {
                     </View>
                 </Pressable>
                 {show[report.reportid] ?
-                    <View style={{ height: 'auto' }}>
+                    <View style={{ height: 'auto', paddingLeft: 10 }}>
                         <Text style={designs.reportText}>1. Can you make this a <Text style={designs.boldText}>safe condition: </Text>{report.choice}</Text>
                         <Text style={designs.reportText}>2. <Text style={designs.boldText}>Project Name: </Text>{report.project}</Text>
                         <Text style={designs.reportText}>3. <Text style={designs.boldText}>Project Floor: </Text>{report.floor}</Text>
                         <Text style={designs.reportText}>4. <Text style={designs.boldText}>Section Area: </Text>{report.section}</Text>
                         <Text style={designs.reportText}>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{report.condition}</Text>
-                        <Text style={designs.reportText}>6. <Text style={designs.boldText}>Comments: </Text>{report.answer}</Text>
-                        <Image style={{ height: 150, borderWidth: 1 }} source={{ uri: base64Image }} />
+                        <Text style={designs.reportText}>6. <Text style={designs.boldText}>Comments: </Text>{report.comment}</Text>
+                        <Image style={{ height: 200, width: 200, borderWidth: 1, alignSelf: 'center' }} resizeMode="contain" objectFit="contain" source={{ uri: base64Image }} />
                     </View>
                     : null}
             </>
@@ -90,7 +90,7 @@ export default function SwipeList({ list }) {
         <View style={styles.rowBack}>
             <TouchableOpacity
                 style={[styles.backRightBtn, styles.backRightBtnRight]}
-                onPress={() => deleteRow(rowMap, data.item.projectid)}
+                onPress={() => deleteRow(rowMap, data.item.projectid, data.item.key)}
             >
                 <Text style={styles.backTextWhite}>Delete</Text>
             </TouchableOpacity>
@@ -100,7 +100,7 @@ export default function SwipeList({ list }) {
     return (
         <View style={styles.container}>
             <SwipeListView
-                data={listData.map(i => i.data())}
+                data={listData.map((i,key) => ({...i.data(),key}))}
                 renderItem={renderItem}
                 renderHiddenItem={renderHiddenItem}
                 leftOpenValue={0}
@@ -133,9 +133,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     title: {
-        //padding: 15,
-        // marginVertical: 10,
-        width: width * 0.8,
+        width: width * 1,
         textAlign: 'center'
     },
     rowBack: {

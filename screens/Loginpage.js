@@ -4,6 +4,9 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { auth } from "../components/firebase";
 import { useEffect } from "react";
 import { storeData } from '../utils/storage';
+import { designs } from "../components/styles";
+import { useNavigation } from "@react-navigation/native";
+
 import {
 	StyleSheet,
 	Text,
@@ -13,8 +16,7 @@ import {
 	TouchableOpacity,
 } from "react-native";
 
-import { designs } from "../components/styles";
-import { useNavigation } from "@react-navigation/native";
+
 
 export default function LoginPage({ navigation }) {
 	const [email, setEmail] = useState("");
