@@ -18,6 +18,7 @@ import {
 function CreateAccount({ navigation }) {
     const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+    
     const handleSignUp = () => {
 		auth
 		.createUserWithEmailAndPassword(email, password)

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { designs } from '../components/styles';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { deleteDoc } from "firebase/firestore";
+
+
 import {
     StyleSheet,
     Text,
@@ -13,6 +15,7 @@ import {
     Image,
     Alert
 } from 'react-native';
+
 
 let width = Dimensions.get('window').width
 
@@ -26,7 +29,7 @@ export default function SwipeList({ list }) {
         }
     };
 
-    const deleteRow = (rowMap, projectid, rowKey) => {
+    const deleteRow = (rowMap, reportid, rowKey) => {
         Alert.alert('Confirm deletion', 'Are you sure you want to delete?', [
             {
                 text: 'Cancel',
@@ -37,7 +40,7 @@ export default function SwipeList({ list }) {
                 text: 'OK', onPress: () => {
                     closeRow(rowMap, rowKey);
                     const newData = [...listData];
-                    const prevIndex = listData.findIndex(item => item.projectid === projectid);
+                    const prevIndex = listData.map(i=>i.data()).findIndex(item => item.reportid === reportid);
                     deleteDoc(listData[prevIndex].ref)
                     newData.splice(prevIndex, 1);
                     setListData(newData);
@@ -85,17 +88,17 @@ export default function SwipeList({ list }) {
     }
 
 
-
     const renderHiddenItem = (data, rowMap) => (
         <View style={styles.rowBack}>
             <TouchableOpacity
                 style={[styles.backRightBtn, styles.backRightBtnRight]}
-                onPress={() => deleteRow(rowMap, data.item.projectid, data.item.key)}
+                onPress={() => deleteRow(rowMap, data.item.reportid, data.item.key)}
             >
                 <Text style={styles.backTextWhite}>Delete</Text>
             </TouchableOpacity>
-        </View>
+        </View> 
     );
+ 
 
     return (
         <View style={styles.container}>

@@ -6,6 +6,7 @@ export const storeData = async (key, value) => {
   try {
     const jsonValue = JSON.stringify(value)
     memory[key] = value
+    //console.log(memory,'write')
     await AsyncStorage.setItem(key, jsonValue)
 
   } catch (e) {
@@ -17,6 +18,7 @@ export const storeData = async (key, value) => {
 export const getData = async (key) => {
   try {
     let jsonValue = memory[key]
+    //console.log(memory,'read')
     //alert(JSON.stringify(memory))
     if(jsonValue === undefined){
       jsonValue = await AsyncStorage.getItem(key)

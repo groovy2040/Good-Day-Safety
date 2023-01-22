@@ -22,24 +22,8 @@ import {
 } from '../components/styles';
 
 
-/*
-    This function is the home page for the app.
-    Create Account - Navigates to the account creation page.
-    Login - If the login details are correct, it will log into the app and navigate to the modules page.
-    Submit Invite ID - After submitting a valid invite ID, the user is navigated to the start of the report.
-    PageLogo - Change the source for your specified image.
-*/
 function Login({ navigation }) {
-    const handleInviteID = () => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then(userCredentials => {
-                const user = userCredentials.user;
-                console.log('Logged in with:', user.email);
-                navigation.navigate('Reports');
-            })
-            .catch(error => alert(error.message));
-    }
-
+    
 
     const [inviteid, setInviteid] = useState();
 

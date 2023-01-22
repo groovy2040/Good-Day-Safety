@@ -60,9 +60,10 @@ function Form6({ navigation }) {
                     alert('Please fill out')
                 }else{
                     const inviteid  = await getData('inviteid')
+                    const userid  = await getData('email')
                     console.log(inviteid)  
 
-                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), reportid: randomNumber, ...data});
+                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, reportid: randomNumber, ...data});
                     await resetFormData()
                     navigation.navigate('Success')
                 }
