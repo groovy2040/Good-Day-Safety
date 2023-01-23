@@ -5,10 +5,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
 import { useEffect } from "react";
-import { doc, getCountFromServer, query, collection, where } from "firebase/firestore";
-import { db } from "../components/firebase";
+import { doc, getCountFromServer, query, collection, where, addDoc } from "firebase/firestore";
+import { db, auth } from "../components/firebase";
 import { storeData } from '../utils/storage';
-
+import { v4 as uuidv4 } from 'uuid';
+import * as SecureStore from 'expo-secure-store';
+import 'react-native-get-random-values';
 
 import {
     InnerContainer,
@@ -30,8 +32,6 @@ import {
 */
 
 function Login({ navigation }) {
-    
-
     const [inviteid, setInviteid] = useState();
 
     useEffect(() => {
@@ -40,6 +40,24 @@ function Login({ navigation }) {
         });
         return unsubscribe;
     }, [navigation]);
+
+    let uuid = uuidv4();
+    console.log(uuid)
+    SecureStore.setItemAsync('secure_deviceid', JSON.stringify(uuid));
+    let fetchUUID = SecureStore.getItemAsync('secure_deviceid');
+    console.log(fetchUUID)
+
+    let fetchUUID2 = SecureStore.getItemAsync('secure_deviceid');
+    //if user has already signed up prior
+    if (fetchUUID2) {
+        uuid = fetchUUID2
+    }
+    SecureStore.setItemAsync('secure_deviceid', JSON.stringify(uuid));
+    console.log(JSON.stringify(uuid))
+
+    addDoc(collection(db, "uuid"), {
+        uniqueID: JSON.stringify(uuid)
+    });
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

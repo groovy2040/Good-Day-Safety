@@ -29,6 +29,27 @@ export default function SwipeList({ list }) {
         }
     };
 
+    const kickUser = () => {
+        //function to make three option alert
+        Alert.alert(
+          'User Kick/Ban Confirmation',
+          'Are you sure you want to kick/ban user?',
+          [
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Canceled')
+            },
+            {
+              text: 'Kick', onPress: () => console.log('Kicked')
+            },
+            {
+              text: 'Ban', onPress: () => console.log('Banned')
+            },
+          ],
+          {cancelable: true},
+        );
+    };
+
     const deleteRow = (rowMap, reportid, rowKey) => {
         Alert.alert('Confirm deletion', 'Are you sure you want to delete?', [
             {
@@ -91,6 +112,12 @@ export default function SwipeList({ list }) {
     const renderHiddenItem = (data, rowMap) => (
         <View style={styles.rowBack}>
             <TouchableOpacity
+                style={[styles.backRightBtn, styles.backRightBtnLeft]}
+                onPress={() => kickUser() }
+                >
+                <Text style={styles.backTextWhite}>Kick</Text>
+                </TouchableOpacity>
+            <TouchableOpacity
                 style={[styles.backRightBtn, styles.backRightBtnRight]}
                 onPress={() => deleteRow(rowMap, data.item.reportid, data.item.key)}
             >
@@ -107,7 +134,7 @@ export default function SwipeList({ list }) {
                 renderItem={renderItem}
                 renderHiddenItem={renderHiddenItem}
                 leftOpenValue={0}
-                rightOpenValue={-75}
+                rightOpenValue={-175}
                 previewRowKey={'0'}
                 previewOpenValue={-40}
                 previewOpenDelay={3000}
