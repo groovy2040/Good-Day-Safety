@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { designs } from '../components/styles';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { deleteDoc } from "firebase/firestore";
-
+import { deleteDoc, addDoc, query, collection, getDocs } from "firebase/firestore";
+import { db } from './firebase';
+import AppID from '../utils/AppID';
 
 import {
     StyleSheet,
@@ -22,6 +23,27 @@ let width = Dimensions.get('window').width
 export default function SwipeList({ list }) {
     const [listData, setListData] = useState(list);
     const [show, setShow] = useState({})
+    let appID = AppID()
+    const banListRef = collection(db, "ban_list");
+    const kickListRef = collection(db, "kick_list");
+    const [banList, setBanList] = useState([]);
+    const [kickList, setKickList] = useState([]);
+    const [kickListsFetching, setKickListFetching] = useState(true)
+
+    useEffect(() => {
+        (async()=>{
+            const banCursor = await getDocs(banListRef)
+            const banList = []
+            banCursor.forEach(item => banList.push(item.data()))
+            setBanList(banList);
+            
+            const kickCursor = await getDocs(kickListRef)
+            const kickList = []
+            kickCursor.forEach(item => kickList.push(item.data()))
+            setKickList(kickList);
+            setKickListFetching(false)
+        })();
+    },[])
 
     const closeRow = (rowMap, rowKey) => {
         if (rowMap[rowKey]) {
@@ -29,39 +51,49 @@ export default function SwipeList({ list }) {
         }
     };
 
-    const kickUser = () => {
-        //function to make three option alert
+    const kickUser = (inviteid,appID) => {
         Alert.alert(
-          'User Kick/Ban Confirmation',
-          'Are you sure you want to kick/ban user?',
-          [
-            {
-              text: 'Cancel',
-              onPress: () => console.log('Canceled')
-            },
-            {
-              text: 'Kick', onPress: () => console.log('Kicked')
-            },
-            {
-              text: 'Ban', onPress: () => console.log('Banned')
-            },
-          ],
-          {cancelable: true},
+            //This is title
+            'User Kick/Ban Confirmation',
+            //This is body text
+            'Are you sure you want to kick/ban user?',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed') },
+                { text: 'Kick', onPress: () => {
+                    console.log('Kick Pressed') 
+                    if(kickList.find(item=>item.appID === appID && item.inviteid === inviteid)){
+                        Alert.alert('Already Kicked User!', 'User has already been kicked')
+                    }else{
+                        addDoc(collection(db, "kick_list"), { appID, inviteid});
+                        Alert.alert('Kicked User!', 'User has been kicked')
+                    }
+                }},
+                { text: 'Ban', onPress: () => {
+                    console.log('Ban Pressed') 
+                    if(banList.find(item=>item.appID === appID)){
+                        Alert.alert('Already Banned User!', 'User has already been banned')
+                    }else{
+                        addDoc(collection(db, "ban_list"), { appID });
+                        Alert.alert('Banned User!', 'User has been banned')
+                    }
+                }},
+            ],
+            { cancelable: true }
         );
-    };
+    }
 
     const deleteRow = (rowMap, reportid, rowKey) => {
         Alert.alert('Confirm deletion', 'Are you sure you want to delete?', [
             {
                 text: 'Cancel',
-                onPress: () => {},
+                onPress: () => { },
                 style: 'cancel',
             },
             {
                 text: 'OK', onPress: () => {
                     closeRow(rowMap, rowKey);
                     const newData = [...listData];
-                    const prevIndex = listData.map(i=>i.data()).findIndex(item => item.reportid === reportid);
+                    const prevIndex = listData.map(i => i.data()).findIndex(item => item.reportid === reportid);
                     deleteDoc(listData[prevIndex].ref)
                     newData.splice(prevIndex, 1);
                     setListData(newData);
@@ -75,7 +107,7 @@ export default function SwipeList({ list }) {
         console.log('This row opened', rowKey);
     };
 
-    function renderItem(data,rowMap) {
+    function renderItem(data, rowMap) {
         const report = data.item;
         var base64Image = 'data:image/png;base64,' + report.image;
         return (
@@ -108,29 +140,31 @@ export default function SwipeList({ list }) {
         );
     }
 
-
     const renderHiddenItem = (data, rowMap) => (
         <View style={styles.rowBack}>
-            <TouchableOpacity
-                style={[styles.backRightBtn, styles.backRightBtnLeft]}
-                onPress={() => kickUser() }
+            {data.item.appID &&
+                <TouchableOpacity
+                    style={[styles.backRightBtn, styles.backRightBtnLeft]}
+                    onPress={() => kickUser(data.item.inviteid, data.item.appID)}
                 >
-                <Text style={styles.backTextWhite}>Kick</Text>
+                    <Text style={styles.backTextWhite}>Kick</Text>
                 </TouchableOpacity>
+            }
             <TouchableOpacity
                 style={[styles.backRightBtn, styles.backRightBtnRight]}
                 onPress={() => deleteRow(rowMap, data.item.reportid, data.item.key)}
             >
                 <Text style={styles.backTextWhite}>Delete</Text>
             </TouchableOpacity>
-        </View> 
+        </View>
     );
- 
 
+    // in case to have notification that lists is not ready yet
+    /*{kickListsFetching?<Text>Loading... kick and ban lists</Text>:null}*/
     return (
         <View style={styles.container}>
             <SwipeListView
-                data={listData.map((i,key) => ({...i.data(),key}))}
+                data={listData.map((i, key) => ({ ...i.data(), key }))}
                 renderItem={renderItem}
                 renderHiddenItem={renderHiddenItem}
                 leftOpenValue={0}

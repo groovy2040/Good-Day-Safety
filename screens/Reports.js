@@ -4,7 +4,7 @@ import { Text, Button, View, TouchableOpacity, ScrollView, StyleSheet, Dimension
 import { auth, db } from "../components/firebase";
 import { collection, doc, setDoc, getDocs, docSnap, query, where } from "firebase/firestore";
 import SwipeList from '../components/SwipeList';
-import { getData,storeData } from '../utils/storage';
+import { getData, storeData } from '../utils/storage';
 
 import {
     InnerContainer,
@@ -15,6 +15,7 @@ import {
     designs
 } from '../components/styles';
 
+//import uniqueid from 'react-native-unique-id'
 
 let width = Dimensions.get('window').width
 /*
@@ -42,9 +43,10 @@ function Reports({ navigation }) {
 
             cursor.forEach(item => results.push(item))
             setReports(results);
+                 
         }
         makeCall()
-    }, [navigation])
+    }, [navigation]) 
 
 
 
@@ -54,9 +56,6 @@ function Reports({ navigation }) {
                 <PageTitle>Reports</PageTitle>
 
                 <View style={styles.container}>
-                    {/*<ScrollView contentContainerStyle={{ paddingVertical: 10 }}>
-                            {reports.map((report) => <ProjectCard key={report.projectid} report={report} />)}
-                    </ScrollView>*/}
                     {reports ? (reports.length > 0 ? <SwipeList list={reports} /> : <Text>No reports</Text>) : <Text>Loading...</Text>}
                 </View>
                 <TouchableOpacity style={designs.Signout} onPress={(handleSignOut)}>

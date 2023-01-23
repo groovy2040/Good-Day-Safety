@@ -12,6 +12,7 @@ import {
     TouchableOpacity,
     Button,
 } from 'react-native';
+import { Alert } from "react-native";
 
 
 export default function Registration({ navigation }) {
@@ -23,6 +24,7 @@ export default function Registration({ navigation }) {
 		.then(userCredentials => {
 			const user = userCredentials.user;
 			console.log(user.email);
+			Alert.alert("Account Created", "Your account has been successfully created")
 		})
 		.catch(error => alert(error.message));
 	}
