@@ -4,7 +4,7 @@ import { Text, Button, View, TouchableOpacity, ScrollView, StyleSheet, Dimension
 import { auth, db } from "../components/firebase";
 import { collection, doc, setDoc, getDocs, docSnap, query, where } from "firebase/firestore";
 import SwipeList from '../components/SwipeList';
-import { getData,storeData } from '../utils/storage';
+import { getData, storeData } from '../utils/storage';
 
 import {
     InnerContainer,
