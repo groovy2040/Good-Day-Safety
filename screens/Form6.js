@@ -51,7 +51,7 @@ function Form6({ navigation }) {
                 <Text style={designs.responseText}>3. <Text style={designs.boldText}>Project Floor: </Text>{data.floor}</Text>
                 <Text style={designs.responseText}>4. <Text style={designs.boldText}>Section Area: </Text>{data.section}</Text>
                 <Text style={designs.responseText}>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{data.condition}</Text>
-                <Text style={designs.responseText}>6. <Text style={designs.boldText}>Comments: </Text>{data.answer}</Text>
+                <Text style={designs.responseText}>6. <Text style={designs.boldText}>Comments: </Text>{data.comment}</Text>
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={async () => {
                 const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
@@ -60,9 +60,10 @@ function Form6({ navigation }) {
                     alert('Please fill out all the entries')
                 }else{
                     const inviteid  = await getData('inviteid')
-                    console.log(inviteid)
+                    const userid  = await getData('email')
+                    console.log(inviteid)  
 
-                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), reportid: randomNumber, ...data});
+                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, reportid: randomNumber, ...data});
                     await resetFormData()
                     navigation.navigate('Success')
                 }

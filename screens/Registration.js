@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../components/firebase";
+import { designs } from "../components/styles";
+
 import {
     StyleSheet,
     Text,
@@ -11,11 +13,11 @@ import {
     Button,
 } from 'react-native';
 
-import { designs } from "../components/styles";
 
 export default function Registration({ navigation }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	
 	const handleSignUp = () => {
 		createUserWithEmailAndPassword(auth, email, password)
 		.then(userCredentials => {

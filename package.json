@@ -32,7 +32,6 @@
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-simple-radio-button-input": "^1.0.4",
     "react-native-swipe-list-view": "^3.2.9",
-    "react-native-swipeable-list-view": "^0.1.2",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

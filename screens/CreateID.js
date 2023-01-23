@@ -1,39 +1,41 @@
 import { StyleSheet, View, Button, Text, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { auth, db } from "../components/firebase";
-import { collection, doc, deleteDoc, setDoc, getDocs, docSnap, addDoc, connectFirestoreEmulator, query, orderBy } from "firebase/firestore"; 
+import { collection, doc, deleteDoc, setDoc, getDocs, docSnap, addDoc, connectFirestoreEmulator, query, orderBy, where } from "firebase/firestore";
 import { getData, storeData } from '../utils/storage';
 import { designs } from '../components/styles';
 
-const InvitationCard = ({ invite, inviteid, fetch, setFetch}) => {
+const InvitationCard = ({ invite, fetch, setFetch }) => {
     const showAlert = () =>
-    Alert.alert('Confirm deletion', 'Are you sure you want to delete?', [
-      {
-        text: 'Cancel',
-        onPress: () => {},
-        style: 'cancel',
-      },
-      {text: 'OK', onPress: () => { deleteDoc(invite.ref)
-    
-        setFetch(!fetch)
-
-    }},
-    ]);
+        Alert.alert('Confirm deletion', 'Are you sure you want to delete?', [
+            {
+                text: 'Cancel',
+                onPress: () => { },
+                style: 'cancel',
+            },
+            {
+                text: 'OK', onPress: () => {
+                    invite.deleteItself()
+                    setFetch(!fetch)
+                }
+            },
+        ]);
     return (
         <View>
             <TouchableOpacity
-            style={{
-                width: '50%',
-                justifyContent: 'space-between',
-                flexDirection: 'row',
-                backgroundColor: '#ccc',
-                alignSelf: 'center',
-                padding: 10,
-                marginBottom: 10
-            }}
-            onPress={showAlert}>
-        <Text>{inviteid}</Text>
-        <Text>{"x"}</Text>
+                style={{
+                    width: '50%',
+                    justifyContent: 'space-between',
+                    flexDirection: 'row',
+                    backgroundColor: '#ccc',
+                    alignSelf: 'center',
+                    padding: 10,
+                    marginBottom: 5,
+                    marginTop: 5
+                }}
+                onPress={showAlert}>
+                <Text>{invite.inviteid}</Text>
+                <Text style={styles.invitetext}>{"x"}</Text>
             </TouchableOpacity>
         </View>
     )
@@ -45,7 +47,7 @@ const CreateID = () => {
     const getRandomNumber = async() => {
         const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
         setNumber(randomNumber);
-        
+
         var user = await getData('email');
         console.log(user);
         addDoc(collection(db, "invitation"), {
@@ -61,10 +63,18 @@ const CreateID = () => {
 
     useEffect(() => {
         const fn = async () => {
-            const q = query(collection(db, "invitation"), orderBy("createdat", "desc"));
+            let userid = await getData('email')
+            const q = query(collection(db, "invitation"), where('userid', '==', userid));
             const cursor = await getDocs(q)
             const results = []
-            cursor.forEach(item => results.push(item))
+            cursor.forEach(item => {
+                let record = item.data();
+                record.deleteItself = function () {
+                    deleteDoc(item.ref)
+                }
+                results.push(record)
+            })
+            results.sort((a, b) => b.createdat - a.createdat)
             setInvitationids(results);
         }
         fn()
@@ -78,17 +88,18 @@ const CreateID = () => {
                 </View>
                 <Button
                     title='Create Invite ID'
-                    onPress={() => {getRandomNumber()}}
+                    onPress={() => { getRandomNumber() }}
                 />
             </View>
             <ScrollView contentContainerStyle={{ paddingVertical: 10 }}>
-                    {invitationids.map((invite) => {
-                        const inviteid = invite.data().inviteid
-                        return  <InvitationCard key={inviteid} invite={invite} inviteid={inviteid} 
+                {invitationids.map((invite) => 
+                    <InvitationCard 
+                        key={invite.inviteid} 
+                        invite={invite}
                         fetch={fetch}
                         setFetch={setFetch}
-                        />
-                    })}
+                    />
+                )}
             </ScrollView>
         </View>
     );
@@ -96,26 +107,31 @@ const CreateID = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flexShrink: 1, 
-        height: '80%',
+        flex: 0.9,
+        height: '70%',
         justifyContent: 'center',
         alignItems: 'center',
     },
     innerContainer: {
         marginTop: 20,
-        marginBottom: 40,
-        padding:80,
-        borderRadius:30,
-        backgroundColor:'white',
+        marginBottom: 20,
+        padding: 40,
+        borderRadius: 30,
+        backgroundColor: 'white',
     },
     numberContainer: {
-        alignItems:'center',
+        alignItems: 'center',
         marginBottom: 10,
     },
     text: {
-        fontSize:25,
-        color:'black',
-        fontWeight:'700',
+        fontSize: 25,
+        color: 'black',
+        fontWeight: '700',
+    },
+    invitetext: {
+        fontSize: 15,
+        color: 'red',
+        fontWeight: '700',
     },
 });
 

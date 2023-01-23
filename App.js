@@ -24,6 +24,7 @@ import Form7 from './screens/Form7'
 import Loginpage from './screens/Loginpage'
 import Registration from './screens/Registration'
 import CreateID from './screens/CreateID';
+import Settings from './components/Settings';
 
 
 const Stack = createNativeStackNavigator();
@@ -42,24 +43,10 @@ function App() {
         <Stack.Screen name="Create Account" component={Registration} />
         <Stack.Screen name="Create an Account" component={CreateAccount} />
         <Stack.Screen name="Account Settings" component={AccountSettings} />
-        <Stack.Screen name="Reports" component={Reports} 
-          options={({navigation})=>({
-            headerRight:  () => 
-              <Button
-                onPress={() =>navigation.navigate('Account Settings')}
-                title="Settings"
-              />
-          })}
-        />
-        <Stack.Screen name="Invite ID Management" component={CreateID} 
-          options={({navigation})=>({
-            headerRight:  () => 
-              <Button
-                onPress={() =>navigation.navigate('Invites')}
-                title="Invites"
-              />
-          })}
-        />
+        <Stack.Screen name="Reports" options={({ navigation }) => ({
+          headerRight: () => <Settings navigation={navigation} />
+        })} component={Reports} />
+        <Stack.Screen name="Invite ID Management" component={CreateID} />
         <Stack.Screen name="Subscription Management" component={Subscription} />
         <Stack.Screen name="Designated Admins" component={DesignatedAdmins} />
         <Stack.Screen name="Account Details" component={AccountDetails} />

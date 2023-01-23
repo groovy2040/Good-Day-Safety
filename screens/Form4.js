@@ -1,10 +1,10 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { storeData } from '../utils/storage';
+import { storeData,getData } from '../utils/storage';
 
-import { 
+import {
     InnerContainer,
     StyledContainer,
     PageTitle,
@@ -19,17 +19,24 @@ import {
 function Form4({ navigation }) {
     const [image, setImage] = useState(null);
 
+    useEffect(() => {
+        getData('image').then(data => {
+            //alert(JSON.stringify(data))
+            setImage(data.image || null)
+        })
+    }, [navigation]);
+
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes : ImagePicker.MediaTypeOptions.Images,
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: false,
             quality: 1,
             base64: true
         });
-    
+
         if (!result.canceled) {
-            setImage(result.assets[0].uri)
-            storeData('image', {image: result.assets[0].base64})
+            setImage(result.assets[0].base64)
+            storeData('image', { image: result.assets[0].base64 })
         }
     };
 
@@ -39,14 +46,13 @@ function Form4({ navigation }) {
             <InnerContainer>
                 <PageTitle>Attach a single photo of the unsafe condition</PageTitle>
                 <Subtitle>This step is mandatory.</Subtitle>
-                <Text>{"\n"}</Text>
-                {image && <Image source={{ uri : image}} style={{ width:"90%", height: "50%"}}/>}
+                {image && <Image source={{ uri: 'data:image/png;base64,'+image }} style={{ width: "60%", height: "50%" }} />}
                 <TouchableOpacity style={designs.Button} onPress={pickImage}>
-                    <Text style={designs.loginText}>Choose a Photo</Text> 
+                    <Text style={designs.loginText}>Choose a Photo</Text>
                 </TouchableOpacity>
             </InnerContainer>
-            <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Comments')}>
-                    <Text style={designs.loginText}>Next</Text> 
+            <TouchableOpacity style={designs.Button} onPress={() => navigation.navigate('Comments')}>
+                <Text style={designs.loginText}>Next</Text>
             </TouchableOpacity>
         </View>
     )
