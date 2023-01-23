@@ -55,9 +55,9 @@ function Login({ navigation }) {
     SecureStore.setItemAsync('secure_deviceid', JSON.stringify(uuid));
     console.log(JSON.stringify(uuid))
 
-    addDoc(collection(db, "uuid"), {
+    /*addDoc(collection(db, "uuid"), {
         uniqueID: JSON.stringify(uuid)
-    });
+    });*/
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
