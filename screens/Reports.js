@@ -5,7 +5,6 @@ import { auth, db } from "../components/firebase";
 import { collection, doc, setDoc, getDocs, docSnap, query, where } from "firebase/firestore";
 import SwipeList from '../components/SwipeList';
 import { getData,storeData } from '../utils/storage';
-import AppID from '../utils/AppID';
 
 import {
     InnerContainer,
@@ -24,7 +23,6 @@ let width = Dimensions.get('window').width
 */
 function Reports({ navigation }) {
     let [reports, setReports] = useState(null)
-    
 
     const handleSignOut = () => {
         auth.signOut()
@@ -59,9 +57,6 @@ function Reports({ navigation }) {
                 <PageTitle>Reports</PageTitle>
 
                 <View style={styles.container}>
-                    {/*<ScrollView contentContainerStyle={{ paddingVertical: 10 }}>
-                            {reports.map((report) => <ProjectCard key={report.projectid} report={report} />)}
-                    </ScrollView>*/}
                     {reports ? (reports.length > 0 ? <SwipeList list={reports} /> : <Text>No reports</Text>) : <Text>Loading...</Text>}
                 </View>
                 <TouchableOpacity style={designs.Signout} onPress={(handleSignOut)}>

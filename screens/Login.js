@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, TextInput, TouchableOpacity, ScrollView, Alert} from 'react-native';
+import { Text, Button, View, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
@@ -23,11 +23,13 @@ import {
 
 
 function Login({ navigation }) {
-    
-
+    let appID = AppID()
+    const banListRef = collection(db, "ban_list");
+    const kickListRef = collection(db, "kick_list");
     const [inviteid, setInviteid] = useState();
 
     useEffect(() => {
+
         const unsubscribe = navigation.addListener('focus', () => {
             setInviteid("");
         });
@@ -58,23 +60,19 @@ function Login({ navigation }) {
                             value={inviteid}
                         />
                     </View>
-                    <TouchableOpacity style={{...designs.submit}} onPress={async () => {
-
+                    <TouchableOpacity style={{ ...designs.submit }} onPress={async () => {
                         //Ban
-                        let appID = AppID()
-                        const banListRef = collection(db, "ban_list");
                         const qban = query(banListRef, where("appID", "==", appID));
                         const ban = await getCountFromServer(qban);
-                        if(ban.data().count){
+                        if (ban.data().count) {
                             Alert.alert("Banned device", "Please contact administrator!");
-                        }else{
-                            //Kick
-                            const kickListRef = collection(db, "kick_list");
+                        } else {
+                            //Kick                            
                             const qkick = query(kickListRef, where("appID", "==", appID), where("inviteid", "==", Number(inviteid)));
                             const kick = await getCountFromServer(qkick);
-                            if(kick.data().count){
+                            if (kick.data().count) {
                                 Alert.alert("Kicked ID", "Please Enter a Valid Invitation Code to Proceed!");
-                            }else{
+                            } else {
                                 // validate invite id
                                 const invitationsRef = collection(db, "invitation");
                                 const q = query(invitationsRef, where("inviteid", "==", Number(inviteid)));

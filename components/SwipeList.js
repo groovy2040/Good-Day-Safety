@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { designs } from '../components/styles';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { deleteDoc, addDoc, query, collection } from "firebase/firestore";
+import { deleteDoc, addDoc, query, collection, getDocs } from "firebase/firestore";
 import { db } from './firebase';
+import AppID from '../utils/AppID';
 
 import {
     StyleSheet,
@@ -22,6 +23,27 @@ let width = Dimensions.get('window').width
 export default function SwipeList({ list }) {
     const [listData, setListData] = useState(list);
     const [show, setShow] = useState({})
+    let appID = AppID()
+    const banListRef = collection(db, "ban_list");
+    const kickListRef = collection(db, "kick_list");
+    const [banList, setBanList] = useState([]);
+    const [kickList, setKickList] = useState([]);
+    const [kickListsFetching, setKickListFetching] = useState(true)
+
+    useEffect(() => {
+        (async()=>{
+            const banCursor = await getDocs(banListRef)
+            const banList = []
+            banCursor.forEach(item => banList.push(item.data()))
+            setBanList(banList);
+            
+            const kickCursor = await getDocs(kickListRef)
+            const kickList = []
+            kickCursor.forEach(item => kickList.push(item.data()))
+            setKickList(kickList);
+            setKickListFetching(false)
+        })();
+    },[])
 
     const closeRow = (rowMap, rowKey) => {
         if (rowMap[rowKey]) {
@@ -39,19 +61,26 @@ export default function SwipeList({ list }) {
                 { text: 'Cancel', onPress: () => console.log('Cancel Pressed') },
                 { text: 'Kick', onPress: () => {
                     console.log('Kick Pressed') 
-                    addDoc(collection(db, "kick_list"), { appID, inviteid});
-                    Alert.alert('Kicked User!', 'User has been kicked')
+                    if(kickList.find(item=>item.appID === appID && item.inviteid === inviteid)){
+                        Alert.alert('Already Kicked User!', 'User has already been kicked')
+                    }else{
+                        addDoc(collection(db, "kick_list"), { appID, inviteid});
+                        Alert.alert('Kicked User!', 'User has been kicked')
+                    }
                 }},
                 { text: 'Ban', onPress: () => {
                     console.log('Ban Pressed') 
-                    addDoc(collection(db, "ban_list"), { appID });
-                    Alert.alert('Banned User!', 'User has been banned')
+                    if(banList.find(item=>item.appID === appID)){
+                        Alert.alert('Already Banned User!', 'User has already been banned')
+                    }else{
+                        addDoc(collection(db, "ban_list"), { appID });
+                        Alert.alert('Banned User!', 'User has been banned')
+                    }
                 }},
             ],
             { cancelable: true }
         );
     }
-
 
     const deleteRow = (rowMap, reportid, rowKey) => {
         Alert.alert('Confirm deletion', 'Are you sure you want to delete?', [
@@ -111,7 +140,6 @@ export default function SwipeList({ list }) {
         );
     }
 
-
     const renderHiddenItem = (data, rowMap) => (
         <View style={styles.rowBack}>
             {data.item.appID &&
@@ -131,7 +159,8 @@ export default function SwipeList({ list }) {
         </View>
     );
 
-
+    // in case to have notification that lists is not ready yet
+    /*{kickListsFetching?<Text>Loading... kick and ban lists</Text>:null}*/
     return (
         <View style={styles.container}>
             <SwipeListView
