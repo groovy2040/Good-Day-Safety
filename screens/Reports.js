@@ -5,6 +5,7 @@ import { auth, db } from "../components/firebase";
 import { collection, doc, setDoc, getDocs, docSnap, query, where } from "firebase/firestore";
 import SwipeList from '../components/SwipeList';
 import { getData,storeData } from '../utils/storage';
+import AppID from '../utils/AppID';
 
 import {
     InnerContainer,
@@ -15,6 +16,7 @@ import {
     designs
 } from '../components/styles';
 
+//import uniqueid from 'react-native-unique-id'
 
 let width = Dimensions.get('window').width
 /*
@@ -22,6 +24,7 @@ let width = Dimensions.get('window').width
 */
 function Reports({ navigation }) {
     let [reports, setReports] = useState(null)
+    
 
     const handleSignOut = () => {
         auth.signOut()
@@ -42,9 +45,10 @@ function Reports({ navigation }) {
 
             cursor.forEach(item => results.push(item))
             setReports(results);
+                 
         }
         makeCall()
-    }, [navigation])
+    }, [navigation]) 
 
 
 

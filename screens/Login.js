@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { doc, getCountFromServer, query, collection, where } from "firebase/firestore";
 import { db } from "../components/firebase";
 import { storeData } from '../utils/storage';
-
+import AppID from '../utils/AppID';
 
 import {
     InnerContainer,
@@ -60,18 +60,34 @@ function Login({ navigation }) {
                     </View>
                     <TouchableOpacity style={{...designs.submit}} onPress={async () => {
 
-                        // validate invite id
+                        //Ban
+                        let appID = AppID()
+                        const banListRef = collection(db, "ban_list");
+                        const qban = query(banListRef, where("appID", "==", appID));
+                        const ban = await getCountFromServer(qban);
+                        if(ban.data().count){
+                            Alert.alert("Banned device", "Please contact administrator!");
+                        }else{
+                            //Kick
+                            const kickListRef = collection(db, "kick_list");
+                            const qkick = query(kickListRef, where("appID", "==", appID), where("inviteid", "==", Number(inviteid)));
+                            const kick = await getCountFromServer(qkick);
+                            if(kick.data().count){
+                                Alert.alert("Kicked ID", "Please Enter a Valid Invitation Code to Proceed!");
+                            }else{
+                                // validate invite id
+                                const invitationsRef = collection(db, "invitation");
+                                const q = query(invitationsRef, where("inviteid", "==", Number(inviteid)));
+                                const docs = await getCountFromServer(q);
+                                console.log(inviteid, typeof inviteid, docs.data())
 
-                        const invitationsRef = collection(db, "invitation");
-                        const q = query(invitationsRef, where("inviteid", "==", Number(inviteid)));
-                        const docs = await getCountFromServer(q);
-
-                        console.log(inviteid, typeof inviteid, docs.data())
-                        if (docs.data().count) {
-                            storeData('inviteid', inviteid)
-                            navigation.navigate('Form Start')
-                        } else {
-                            Alert.alert("Invalid ID", "Please Enter a Valid Invitation Code to Proceed!");
+                                if (docs.data().count) {
+                                    storeData('inviteid', inviteid)
+                                    navigation.navigate('Form Start')
+                                } else {
+                                    Alert.alert("Invalid ID", "Please Enter a Valid Invitation Code to Proceed!");
+                                }
+                            }
                         }
 
                     }}>

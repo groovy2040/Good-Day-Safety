@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { designs } from '../components/styles';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { deleteDoc } from "firebase/firestore";
-
+import { deleteDoc, addDoc, query, collection } from "firebase/firestore";
+import { db } from './firebase';
 
 import {
     StyleSheet,
@@ -29,18 +29,42 @@ export default function SwipeList({ list }) {
         }
     };
 
+    const kickUser = (inviteid,appID) => {
+        Alert.alert(
+            //This is title
+            'User Kick/Ban Confirmation',
+            //This is body text
+            'Are you sure you want to kick/ban user?',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed') },
+                { text: 'Kick', onPress: () => {
+                    console.log('Kick Pressed') 
+                    addDoc(collection(db, "kick_list"), { appID, inviteid});
+                    Alert.alert('Kicked User!', 'User has been kicked')
+                }},
+                { text: 'Ban', onPress: () => {
+                    console.log('Ban Pressed') 
+                    addDoc(collection(db, "ban_list"), { appID });
+                    Alert.alert('Banned User!', 'User has been banned')
+                }},
+            ],
+            { cancelable: true }
+        );
+    }
+
+
     const deleteRow = (rowMap, reportid, rowKey) => {
         Alert.alert('Confirm deletion', 'Are you sure you want to delete?', [
             {
                 text: 'Cancel',
-                onPress: () => {},
+                onPress: () => { },
                 style: 'cancel',
             },
             {
                 text: 'OK', onPress: () => {
                     closeRow(rowMap, rowKey);
                     const newData = [...listData];
-                    const prevIndex = listData.map(i=>i.data()).findIndex(item => item.reportid === reportid);
+                    const prevIndex = listData.map(i => i.data()).findIndex(item => item.reportid === reportid);
                     deleteDoc(listData[prevIndex].ref)
                     newData.splice(prevIndex, 1);
                     setListData(newData);
@@ -54,7 +78,7 @@ export default function SwipeList({ list }) {
         console.log('This row opened', rowKey);
     };
 
-    function renderItem(data,rowMap) {
+    function renderItem(data, rowMap) {
         const report = data.item;
         var base64Image = 'data:image/png;base64,' + report.image;
         return (
@@ -90,24 +114,32 @@ export default function SwipeList({ list }) {
 
     const renderHiddenItem = (data, rowMap) => (
         <View style={styles.rowBack}>
+            {data.item.appID &&
+                <TouchableOpacity
+                    style={[styles.backRightBtn, styles.backRightBtnLeft]}
+                    onPress={() => kickUser(data.item.inviteid, data.item.appID)}
+                >
+                    <Text style={styles.backTextWhite}>Kick</Text>
+                </TouchableOpacity>
+            }
             <TouchableOpacity
                 style={[styles.backRightBtn, styles.backRightBtnRight]}
                 onPress={() => deleteRow(rowMap, data.item.reportid, data.item.key)}
             >
                 <Text style={styles.backTextWhite}>Delete</Text>
             </TouchableOpacity>
-        </View> 
+        </View>
     );
- 
+
 
     return (
         <View style={styles.container}>
             <SwipeListView
-                data={listData.map((i,key) => ({...i.data(),key}))}
+                data={listData.map((i, key) => ({ ...i.data(), key }))}
                 renderItem={renderItem}
                 renderHiddenItem={renderHiddenItem}
                 leftOpenValue={0}
-                rightOpenValue={-75}
+                rightOpenValue={-175}
                 previewRowKey={'0'}
                 previewOpenValue={-40}
                 previewOpenDelay={3000}

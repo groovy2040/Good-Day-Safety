@@ -22,6 +22,7 @@
     "react-dom": "18.2.0",
     "react-native": "0.71.0",
     "react-native-checkbox-selection": "^1.1.0",
+    "react-native-device-info": "^10.3.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-multiple-choice": "^0.0.8",
     "react-native-multiple-choice-picker": "^1.0.6",
