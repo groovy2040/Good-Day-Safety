@@ -24,6 +24,9 @@ import Form7 from './screens/Form7'
 import Loginpage from './screens/Loginpage'
 import Registration from './screens/Registration'
 import CreateID from './screens/CreateID';
+import KickList from './screens/KickList'
+import BanList from './screens/BanList'
+
 import Settings from './components/Settings';
 
 
@@ -58,6 +61,9 @@ function App() {
         <Stack.Screen name="Comments" component={Form5} />
         <Stack.Screen name="Confirm" component={Form6} />
         <Stack.Screen name="Success" component={Form7} />
+        <Stack.Screen name="Kick List" component={KickList} />
+        <Stack.Screen name="Ban List" component={BanList} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

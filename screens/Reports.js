@@ -28,7 +28,7 @@ function Reports({ navigation }) {
         auth.signOut()
             .then(async () => {
                 setReports(null)
-                await storeData('email','')
+                await storeData('email', '')
                 navigation.replace("Login page")
             })
             .catch(error => alert(error.message))
@@ -43,10 +43,10 @@ function Reports({ navigation }) {
 
             cursor.forEach(item => results.push(item))
             setReports(results);
-                 
+
         }
         makeCall()
-    }, [navigation]) 
+    }, [navigation])
 
 
 
@@ -54,8 +54,15 @@ function Reports({ navigation }) {
         <View style={designs.container}>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageTitle>Reports</PageTitle>
-
+                <View style={styles.header}>
+                    <TouchableOpacity style={designs.headerButton} onPress={() => navigation.navigate('Kick List')}>
+                        <Text style={designs.loginText}>Kick List</Text>
+                    </TouchableOpacity>
+                    <PageTitle>Reports</PageTitle>
+                    <TouchableOpacity style={designs.headerButton} onPress={() => navigation.navigate('Ban List')}>
+                        <Text style={designs.loginText}>Ban List</Text>
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.container}>
                     {reports ? (reports.length > 0 ? <SwipeList list={reports} /> : <Text>No reports</Text>) : <Text>Loading...</Text>}
                 </View>
@@ -73,6 +80,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: width * 1
+    },
+    header: { 
+        display: 'flex', 
+        width: width, 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'space-around' 
     }
 })
 
