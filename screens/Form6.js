@@ -5,6 +5,7 @@ import { getData } from '../utils/storage';
 import { collection, doc, setDoc, getDocs, docSnap, addDoc, connectFirestoreEmulator } from "firebase/firestore"; 
 import { auth, db } from "../components/firebase";
 import resetFormData from '../utils/resetFormData';
+import AppID from '../utils/AppID';
 
 
 import { 
@@ -31,7 +32,7 @@ function Form6({ navigation }) {
             const data5 = await getData('form5answer');            
             const data = {...data1, ...data2, ...data3,  ...data5, ...image} 
             setData(data)
-        
+
         }
         fn()
     }, [])
@@ -61,9 +62,16 @@ function Form6({ navigation }) {
                 }else{
                     const inviteid  = await getData('inviteid')
                     const userid  = await getData('email')
+<<<<<<< HEAD
                     console.log(inviteid)  
 
                     addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, reportid: randomNumber, ...data});
+=======
+                    const appID = AppID()
+                    console.log(inviteid)  
+
+                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, appID, reportid: randomNumber, ...data});
+>>>>>>> Luke
                     await resetFormData()
                     navigation.navigate('Success')
                 }
