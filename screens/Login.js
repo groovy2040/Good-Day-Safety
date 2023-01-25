@@ -36,7 +36,7 @@ function Login({ navigation }) {
         return unsubscribe;
     }, [navigation]);
 
-    let uuid = uuidv4();
+    /*let uuid = uuidv4();
     console.log(uuid)
     SecureStore.setItemAsync('secure_deviceid', JSON.stringify(uuid));
     let fetchUUID = SecureStore.getItemAsync('secure_deviceid');
@@ -50,7 +50,7 @@ function Login({ navigation }) {
     SecureStore.setItemAsync('secure_deviceid', JSON.stringify(uuid));
     console.log(JSON.stringify(uuid))
 
-    /*addDoc(collection(db, "uuid"), {
+    addDoc(collection(db, "uuid"), {
         uniqueID: JSON.stringify(uuid)
     });*/
 

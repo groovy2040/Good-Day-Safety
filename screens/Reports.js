@@ -69,6 +69,7 @@ function Reports({ navigation }) {
                 <TouchableOpacity style={designs.Signout} onPress={(handleSignOut)}>
                     <Text style={designs.loginText}>Sign out</Text>
                 </TouchableOpacity>
+            </InnerContainer>
         </View>
     )
 }
