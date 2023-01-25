@@ -149,6 +149,9 @@ export const designs = StyleSheet.create({
     marginVertical: 20,
     backgroundColor: "#1e90ff",
   },
+  loginTextWhite: {
+    color: "white"
+  },
   Button: {
     width: "50%",
     borderRadius: 25,
@@ -166,6 +169,15 @@ export const designs = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#1e90ff",
     paddingHorizontal: 20
+  },
+  HeaderButtonRed: {
+    borderRadius: 25,
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fe6685",
+    paddingHorizontal: 20,
+    color: "white",
   },
   Signout:{
     width: "50%",

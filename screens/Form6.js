@@ -36,11 +36,17 @@ function Form6({ navigation }) {
         }
         fn()
     }, [])
+
+    const getCurrentDate=()=>{
  
-    /*const addReport = () => addDoc(collection(db, "report"), {
-        inviteid: setNumber(randomNumber),
-        userid: getData('email')
-    });*/
+        var date = new Date().getDate();
+        var month = new Date().getMonth() + 1;
+        var year = new Date().getFullYear();
+   
+        return date + '-' + month + '-' + year;
+  }
+ 
+   
 
     return (
         <View style={{...designs.container}}>
@@ -63,9 +69,10 @@ function Form6({ navigation }) {
                     const inviteid  = await getData('inviteid')
                     const userid  = await getData('email')
                     const appID = AppID()
+                    const date = getCurrentDate()
                     console.log(inviteid)  
 
-                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, appID, reportid: randomNumber, ...data});
+                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, appID, reportid: randomNumber, date, ...data});
                     await resetFormData()
                     navigation.navigate('Success')
                 }

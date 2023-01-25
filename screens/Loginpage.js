@@ -1,8 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../components/firebase";
-import { useEffect } from "react";
 import { storeData } from '../utils/storage';
 import { designs } from "../components/styles";
 

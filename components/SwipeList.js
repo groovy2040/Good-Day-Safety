@@ -31,19 +31,19 @@ export default function SwipeList({ list }) {
     const [kickListsFetching, setKickListFetching] = useState(true)
 
     useEffect(() => {
-        (async()=>{
+        (async () => {
             const banCursor = await getDocs(banListRef)
             const banList = []
             banCursor.forEach(item => banList.push(item.data()))
             setBanList(banList);
-            
+
             const kickCursor = await getDocs(kickListRef)
             const kickList = []
             kickCursor.forEach(item => kickList.push(item.data()))
             setKickList(kickList);
             setKickListFetching(false)
         })();
-    },[])
+    }, [])
 
     const closeRow = (rowMap, rowKey) => {
         if (rowMap[rowKey]) {
@@ -51,7 +51,7 @@ export default function SwipeList({ list }) {
         }
     };
 
-    const kickUser = (inviteid,appID) => {
+    const kickUser = (inviteid, appID) => {
         Alert.alert(
             //This is title
             'User Kick/Ban Confirmation',
@@ -59,24 +59,28 @@ export default function SwipeList({ list }) {
             'Are you sure you want to kick/ban user?',
             [
                 { text: 'Cancel', onPress: () => console.log('Cancel Pressed') },
-                { text: 'Kick', onPress: () => {
-                    console.log('Kick Pressed') 
-                    if(kickList.find(item=>item.appID === appID && item.inviteid === inviteid)){
-                        Alert.alert('Already Kicked User!', 'User has already been kicked')
-                    }else{
-                        addDoc(collection(db, "kick_list"), { appID, inviteid});
-                        Alert.alert('Kicked User!', 'User has been kicked')
+                {
+                    text: 'Kick', onPress: () => {
+                        console.log('Kick Pressed')
+                        if (kickList.find(item => item.appID === appID && item.inviteid === inviteid)) {
+                            Alert.alert('Already Kicked User!', 'User has already been kicked')
+                        } else {
+                            addDoc(collection(db, "kick_list"), { appID, inviteid });
+                            Alert.alert('Kicked User!', 'User has been kicked')
+                        }
                     }
-                }},
-                { text: 'Ban', onPress: () => {
-                    console.log('Ban Pressed') 
-                    if(banList.find(item=>item.appID === appID)){
-                        Alert.alert('Already Banned User!', 'User has already been banned')
-                    }else{
-                        addDoc(collection(db, "ban_list"), { appID });
-                        Alert.alert('Banned User!', 'User has been banned')
+                },
+                {
+                    text: 'Ban', onPress: () => {
+                        console.log('Ban Pressed')
+                        if (banList.find(item => item.appID === appID)) {
+                            Alert.alert('Already Banned User!', 'User has already been banned')
+                        } else {
+                            addDoc(collection(db, "ban_list"), { appID });
+                            Alert.alert('Banned User!', 'User has been banned')
+                        }
                     }
-                }},
+                },
             ],
             { cancelable: true }
         );
@@ -121,18 +125,20 @@ export default function SwipeList({ list }) {
                     }}
                     style={styles.rowFront}
                 >
-                    <View >
-                        <Text style={styles.title}>{report.project || 'no project name'}</Text>
+                    <View>
+                        <Text style={{position:'absolute', left: 10}}> {report.date}</Text>
+                        <Text style={styles.title}>{report.project}</Text>
                     </View>
                 </Pressable>
                 {show[report.reportid] ?
                     <View style={{ height: 'auto', paddingLeft: 10 }}>
-                        <Text style={designs.reportText}>1. Can you make this a <Text style={designs.boldText}>safe condition: </Text>{report.choice}</Text>
-                        <Text style={designs.reportText}>2. <Text style={designs.boldText}>Project Name: </Text>{report.project}</Text>
-                        <Text style={designs.reportText}>3. <Text style={designs.boldText}>Project Floor: </Text>{report.floor}</Text>
-                        <Text style={designs.reportText}>4. <Text style={designs.boldText}>Section Area: </Text>{report.section}</Text>
-                        <Text style={designs.reportText}>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{report.condition}</Text>
-                        <Text style={designs.reportText}>6. <Text style={designs.boldText}>Comments: </Text>{report.comment}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Report ID: </Text> {report.reportid}</Text>
+                        <Text style={designs.reportText}> Can you make this a <Text style={designs.boldText}>safe condition: </Text> {report.choice}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Project Name: </Text> {report.project}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Project Floor: </Text> {report.floor}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Section Area: </Text> {report.section}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Unsafe Conditions: </Text> {report.condition}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Comments: </Text> {report.comment}</Text>
                         <Image style={{ height: 200, width: 200, borderWidth: 1, alignSelf: 'center' }} resizeMode="contain" objectFit="contain" source={{ uri: base64Image }} />
                     </View>
                     : null}

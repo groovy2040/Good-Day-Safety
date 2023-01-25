@@ -28,7 +28,7 @@ function Reports({ navigation }) {
         auth.signOut()
             .then(async () => {
                 setReports(null)
-                await storeData('email','')
+                await storeData('email', '')
                 navigation.replace("Login page")
             })
             .catch(error => alert(error.message))
@@ -43,10 +43,10 @@ function Reports({ navigation }) {
 
             cursor.forEach(item => results.push(item))
             setReports(results);
-                 
+
         }
         makeCall()
-    }, [navigation]) 
+    }, [navigation])
 
 
 
@@ -71,6 +71,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: width * 1
+    },
+    header: { 
+        display: 'flex', 
+        width: width, 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'space-around' 
     }
 })
 
