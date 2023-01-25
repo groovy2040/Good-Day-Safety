@@ -127,8 +127,8 @@ export default function SwipeList({ list }) {
                 </Pressable>
                 {show[report.reportid] ?
                     <View style={{ height: 'auto', paddingLeft: 10 }}>
-                        <Text style={designs.reportText}><Text style={designs.boldText}> Report ID: </Text> {report.reportid}{'\n'}</Text>
-                        <Text style={designs.reportText}><Text style={designs.boldText}> Report Date: </Text> {report.date}{'\n'}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Report ID: </Text> {report.reportid}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Report Date: </Text> {report.date}</Text>
                         <Text style={designs.reportText}> Can you make this a <Text style={designs.boldText}>safe condition: </Text> {report.choice}</Text>
                         <Text style={designs.reportText}><Text style={designs.boldText}> Project Name: </Text> {report.project}</Text>
                         <Text style={designs.reportText}><Text style={designs.boldText}> Project Floor: </Text> {report.floor}</Text>
