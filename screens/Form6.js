@@ -72,7 +72,7 @@ function Form6({ navigation }) {
                     const date = getCurrentDate()
                     console.log(inviteid)  
 
-                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, appID, reportid: randomNumber, ...data});
+                    addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, appID, reportid: randomNumber, date, ...data});
                     await resetFormData()
                     navigation.navigate('Success')
                 }
