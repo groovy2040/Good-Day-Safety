@@ -122,7 +122,7 @@ export default function SwipeList({ list }) {
                     style={styles.rowFront}
                 >
                     <View >
-                        <Text style={styles.title}>{report.project || 'no project name'}</Text>
+                        <Text style={styles.title}>{report.project}</Text>
                     </View>
                 </Pressable>
                 {show[report.reportid] ?
