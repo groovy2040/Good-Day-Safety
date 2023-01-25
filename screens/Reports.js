@@ -55,11 +55,11 @@ function Reports({ navigation }) {
             <StatusBar style="dark" />
             <InnerContainer>
                 <View style={styles.header}>
-                    <TouchableOpacity style={designs.headerButton} onPress={() => navigation.navigate('Kick List')}>
+                    <TouchableOpacity style={designs.HeaderButtonRed} onPress={() => navigation.navigate('Kick List')}>
                         <Text style={designs.loginText}>Kick List</Text>
                     </TouchableOpacity>
                     <PageTitle>Reports</PageTitle>
-                    <TouchableOpacity style={designs.headerButton} onPress={() => navigation.navigate('Ban List')}>
+                    <TouchableOpacity style={designs.HeaderButtonRed} onPress={() => navigation.navigate('Ban List')}>
                         <Text style={designs.loginText}>Ban List</Text>
                     </TouchableOpacity>
                 </View>

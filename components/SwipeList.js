@@ -127,12 +127,14 @@ export default function SwipeList({ list }) {
                 </Pressable>
                 {show[report.reportid] ?
                     <View style={{ height: 'auto', paddingLeft: 10 }}>
-                        <Text style={designs.reportText}>1. Can you make this a <Text style={designs.boldText}>safe condition: </Text>{report.choice}</Text>
-                        <Text style={designs.reportText}>2. <Text style={designs.boldText}>Project Name: </Text>{report.project}</Text>
-                        <Text style={designs.reportText}>3. <Text style={designs.boldText}>Project Floor: </Text>{report.floor}</Text>
-                        <Text style={designs.reportText}>4. <Text style={designs.boldText}>Section Area: </Text>{report.section}</Text>
-                        <Text style={designs.reportText}>5. <Text style={designs.boldText}>Unsafe Conditions: </Text>{report.condition}</Text>
-                        <Text style={designs.reportText}>6. <Text style={designs.boldText}>Comments: </Text>{report.comment}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Report ID: </Text> {report.reportid}{'\n'}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Report Date: </Text> {report.date}{'\n'}</Text>
+                        <Text style={designs.reportText}> Can you make this a <Text style={designs.boldText}>safe condition: </Text> {report.choice}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Project Name: </Text> {report.project}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Project Floor: </Text> {report.floor}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Section Area: </Text> {report.section}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Unsafe Conditions: </Text> {report.condition}</Text>
+                        <Text style={designs.reportText}><Text style={designs.boldText}> Comments: </Text> {report.comment}</Text>
                         <Image style={{ height: 200, width: 200, borderWidth: 1, alignSelf: 'center' }} resizeMode="contain" objectFit="contain" source={{ uri: base64Image }} />
                     </View>
                     : null}
