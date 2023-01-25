@@ -18,10 +18,12 @@ import {
     This page will allow the user to create an account to use the app.
 */
 function AccountDetails({ navigation }) {
+    
     let [email, setEmail] = useState('')
     useEffect(()=>{
         getData('email').then(data=>setEmail(data))
     },[])
+
     return (
         <View style={designs.container}>
             <StatusBar style="dark" />

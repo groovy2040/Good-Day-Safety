@@ -8,6 +8,7 @@ import {
 	TextInput,
 	Button,
 	TouchableOpacity,
+    Alert
 } from "react-native";
 
 
@@ -19,7 +20,7 @@ export default function UpdatePassword() {
         const user = auth.currentUser;
 
         updatePassword(user, newPassword).then(() => {
-            console.log('Update successful')
+            Alert.alert('Password Change', 'Your password has been successfully changed!')
 
         }).catch((error) => {
             console.log(error)
