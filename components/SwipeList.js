@@ -43,7 +43,7 @@ export default function SwipeList({ list }) {
             setKickList(kickList);
             setKickListFetching(false)
         })();
-    }, [])
+    },[])
 
     const closeRow = (rowMap, rowKey) => {
         if (rowMap[rowKey]) {
@@ -51,7 +51,7 @@ export default function SwipeList({ list }) {
         }
     };
 
-    const kickUser = (inviteid, appID) => {
+    const kickUser = (inviteid,appID) => {
         Alert.alert(
             //This is title
             'User Kick/Ban Confirmation',

@@ -36,6 +36,8 @@ function Login({ navigation }) {
         return unsubscribe;
     }, [navigation]);
 
+    
+
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={designs.container}>

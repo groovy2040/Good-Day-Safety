@@ -53,14 +53,23 @@ function Reports({ navigation }) {
     return (
         <View style={designs.container}>
             <StatusBar style="dark" />
-                <PageTitle>Reports</PageTitle>
-
+            <InnerContainer>
+                <View style={styles.header}>
+                    <TouchableOpacity style={designs.headerButton} onPress={() => navigation.navigate('Kick List')}>
+                        <Text style={designs.loginText}>Kick List</Text>
+                    </TouchableOpacity>
+                    <PageTitle>Reports</PageTitle>
+                    <TouchableOpacity style={designs.headerButton} onPress={() => navigation.navigate('Ban List')}>
+                        <Text style={designs.loginText}>Ban List</Text>
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.container}>
                     {reports ? (reports.length > 0 ? <SwipeList list={reports} /> : <Text>No reports</Text>) : <Text>Loading...</Text>}
                 </View>
                 <TouchableOpacity style={designs.Signout} onPress={(handleSignOut)}>
                     <Text style={designs.loginText}>Sign out</Text>
                 </TouchableOpacity>
+            </InnerContainer>
         </View>
     )
 }
