@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View } from 'react-native';
 import { getData } from '../utils/storage';
+import UpdatePassword from '../components/UpdatePassword';
 
 import { 
     InnerContainer,
@@ -27,7 +28,7 @@ function AccountDetails({ navigation }) {
             <InnerContainer>
                 <PageTitle>Account Details</PageTitle>
                 <View style={{display:'flex', flexDirection:'row'}}><Text style={designs.boldText}>Email Address:</Text><Text> {email}</Text></View>
-                
+                <UpdatePassword/>
             </InnerContainer>
         </View>
     )
