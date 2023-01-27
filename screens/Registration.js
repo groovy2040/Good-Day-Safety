@@ -55,5 +55,3 @@ export default function Registration({ navigation }) {
 		</View> 
 	);
 }
-
-//() => navigation.navigate('Reports')
