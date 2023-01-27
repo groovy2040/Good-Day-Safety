@@ -170,7 +170,7 @@ export default function SwipeList({ list }) {
     return (
         <View style={styles.container}>
             <SwipeListView
-                data={listData.map((i, key) => ({ ...i.data(), key }))}
+                data={listData.map((i, key) => ({ ...i.data(), key })).sort((a,b)=> b.reportid - a.reportid)}
                 renderItem={renderItem}
                 renderHiddenItem={renderHiddenItem}
                 leftOpenValue={0}
