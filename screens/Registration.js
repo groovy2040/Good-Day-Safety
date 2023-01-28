@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../components/firebase";
 import { designs } from "../components/styles";
+import { Alert } from "react-native";
 
 import {
     StyleSheet,
@@ -12,7 +13,7 @@ import {
     TouchableOpacity,
     Button,
 } from 'react-native';
-import { Alert } from "react-native";
+
 
 
 export default function Registration({ navigation }) {
