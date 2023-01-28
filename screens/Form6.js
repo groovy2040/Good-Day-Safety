@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Button, View, TouchableOpacity } from 'react-native';
 import { getData } from '../utils/storage';
-import { collection, doc, setDoc, getDocs, docSnap, addDoc, connectFirestoreEmulator } from "firebase/firestore"; 
+import { collection, doc, where, getDocs, query, addDoc, connectFirestoreEmulator } from "firebase/firestore"; 
 import { auth, db } from "../components/firebase";
 import resetFormData from '../utils/resetFormData';
 import AppID from '../utils/AppID';
@@ -61,16 +61,22 @@ function Form6({ navigation }) {
                 <Text style={designs.responseText}>6. <Text style={designs.boldText}>Comments: </Text>{data.comment}</Text>
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={async () => {
-                const randomNumber = Math.floor(Math.floor(100000 + Math.random() * 900000));
+                const randomNumber = Date.now()
                 
                 if(Object.values(data).some(value=>!value.length) || Object.values(data).length < 7){
-                    alert('Please fill out')
+                    alert('Please fill out the blank fields')
                 }else{
                     const inviteid  = await getData('inviteid')
-                    const userid  = await getData('email')
+                    console.log(inviteid)
+                    const q = query(collection(db, "invitation"), where('inviteid', '==', +inviteid));
+                    const cursor = await getDocs(q)
+                    let userid = null
+                    cursor.forEach(el=>{
+                        userid = el.data().userid
+                    })
                     const appID = AppID()
                     const date = getCurrentDate()
-                    console.log(inviteid)  
+                    console.log(inviteid, userid)  
 
                     addDoc(collection(db, "report"), { inviteid: Number(inviteid), userid, appID, reportid: randomNumber, date, ...data});
                     await resetFormData()

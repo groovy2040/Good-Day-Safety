@@ -18,9 +18,8 @@ import {
 
 
 
-//Still a work in progress!
 function Form1({ navigation }) {
-    const [chosenOption, setChosenOption] = useState(); //will store our current user options
+    const [chosenOption, setChosenOption] = useState(); 
   const options = [
     { label: 'Yes', value: 0 },
     { label: 'No', value: 1},
@@ -63,10 +62,10 @@ const initialValue = options.find(o => o.label === data.choice)?.value ;
              {dataReady && <RadioForm
                 radioStyle={{marginTop: 0, marginBottom: 50}}
                 radio_props={options}
-                initial={typeof initialValue !== 'undefined' ? initialValue : null} //initial value of this group
+                initial={typeof initialValue !== 'undefined' ? initialValue : null} 
                 onPress={(value) => {
                 setData({choice: options.find(o => o.value === value)?.label})
-            }} //if the user changes options, set the new value
+            }} 
             /> }   
             </InnerContainer>
             <TouchableOpacity style={designs.Button} onPress={() =>navigation.navigate('Location')}>

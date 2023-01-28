@@ -25,9 +25,6 @@ function Form7({ navigation }) {
         </View>
     )
 
-    submit = () => {
-        alert('This Report has been sent successfully!');
-    };
 }
-//this.submit for making an alert
+
 export default Form7;

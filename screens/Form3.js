@@ -79,7 +79,7 @@ export default function Form3({ navigation }) {
               if (data.condition) {
                 storeData('form3answer', data)
               }
-            }} //if the user changes options, set the new value
+            }} 
           />
           <TouchableOpacity style={designs.Button} onPress={() => navigation.navigate('Photo')}>
             <Text style={designs.loginText}>Next</Text>
