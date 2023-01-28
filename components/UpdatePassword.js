@@ -20,7 +20,12 @@ export default function UpdatePassword() {
         const user = auth.currentUser;
 
         updatePassword(user, newPassword).then(() => {
-            Alert.alert('Password Change', 'Your password has been successfully changed!')
+            if(newPassword){
+                Alert.alert('Password Change', 'Your password has been successfully changed!')
+            }else{
+                Alert.alert('Password Blank', 'Please enter a valid password!')
+            }
+
 
         }).catch((error) => {
             console.log(error)

@@ -119,7 +119,7 @@ export default function SwipeList({ list }) {
                 <Pressable
                     onPress={() => {
                         show[report.reportid] = !show[report.reportid]
-                        rowMap[data.index].closeRow()
+                        rowMap[data.item.key].closeRow()
                         setShow({ ...show })
 
                     }}
