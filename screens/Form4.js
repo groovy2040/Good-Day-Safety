@@ -21,7 +21,6 @@ function Form4({ navigation }) {
 
     useEffect(() => {
         getData('image').then(data => {
-            //alert(JSON.stringify(data))
             setImage(data.image || null)
         })
     }, [navigation]);

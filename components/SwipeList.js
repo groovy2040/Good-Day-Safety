@@ -165,8 +165,6 @@ export default function SwipeList({ list }) {
         </View>
     );
 
-    // in case to have notification that lists is not ready yet
-    /*{kickListsFetching?<Text>Loading... kick and ban lists</Text>:null}*/
     return (
         <View style={styles.container}>
             <SwipeListView

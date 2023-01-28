@@ -14,9 +14,6 @@ import {
 } from '../components/styles';
 
 
-/*
-    This page will allow the user to create an account to use the app.
-*/
 function AccountDetails({ navigation }) {
     
     let [email, setEmail] = useState('')

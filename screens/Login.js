@@ -73,7 +73,6 @@ function Login({ navigation }) {
                             if (kick.data().count) {
                                 Alert.alert("Kicked ID", "Please Enter a Valid Invitation Code to Proceed!");
                             } else {
-                                // validate invite id
                                 const invitationsRef = collection(db, "invitation");
                                 const q = query(invitationsRef, where("inviteid", "==", Number(inviteid)));
                                 const docs = await getCountFromServer(q);

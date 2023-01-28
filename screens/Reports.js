@@ -15,12 +15,9 @@ import {
     designs
 } from '../components/styles';
 
-//import uniqueid from 'react-native-unique-id'
 
 let width = Dimensions.get('window').width
-/*
-    This page will allow the logged in user to manage their modules.
-*/
+
 function Reports({ navigation }) {
     let [reports, setReports] = useState(null)
 
