@@ -13,7 +13,7 @@ export const firebaseConfig = {
   storageBucket: "good-day-app-5be12.appspot.com",
   messagingSenderId: "926461189493",
   appId: "1:926461189493:web:493fb7c03618b239af073c",
-  measurementId: "G-49MRTKXD4K"
+  measurementId: "G-49MRTKXD4K",
 };
 
 // Initialize Firebase
